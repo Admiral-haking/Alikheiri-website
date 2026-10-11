@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, Search, ArrowUpRight, Clock, Calendar, ThumbsUp } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { sampleBlogPosts } from '../../data/realContentData';
+import { blogPosts } from '../../data/realContentData';
 import { BlogPost } from '../../types/portfolio';
 
 interface BlogSectionProps {
@@ -18,7 +18,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onSelectPost }) => {
 
   const categories = ['all', 'AI Architecture', 'Distributed Systems', 'Creative Engineering'];
 
-  const filteredPosts = sampleBlogPosts.filter(post => {
+  const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
