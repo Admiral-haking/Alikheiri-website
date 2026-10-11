@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             <span className="text-slate-600">·</span>
             <span className="text-xs font-mono text-cyan-400 font-normal">{t.nav.role}</span>
           </div>
-          <p className="text-xs text-slate-500 font-mono">{t.footer.copyright}</p>
+          <p className="text-xs text-slate-400 font-mono">{t.footer.copyright}</p>
         </div>
 
         {/* Center: Social Links */}

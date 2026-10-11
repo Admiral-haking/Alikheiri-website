@@ -120,6 +120,7 @@ export const GithubSection: React.FC = () => {
             <button
               onClick={() => fetchGithubRepos(username)}
               disabled={loading}
+              aria-label={t.github.lookupBtn}
               className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-mono transition-colors flex items-center gap-1.5 border border-white/10"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
