@@ -15,6 +15,8 @@ export interface Project {
   challengeFa: string;
   solution: string;
   solutionFa: string;
+  architecture: string;
+  architectureFa: string;
   impact: string;
   impactFa: string;
   metrics: { label: string; value: string }[];

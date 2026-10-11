@@ -4,6 +4,7 @@ import { Project } from '../../types/portfolio';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { ProjectVisual } from './ProjectVisual';
+import { ArchitectureDiagram } from './ArchitectureDiagram';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -121,6 +122,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               </div>
               <p className="readable-copy rtl-safe text-xs text-slate-300 leading-relaxed">{solution}</p>
             </div>
+          </div>
+
+          <div className="space-y-2">
+            <div className="text-cyan-400 text-xs font-mono font-semibold tracking-wider uppercase">
+              {t.projects.architectureTitle}
+            </div>
+            <ArchitectureDiagram project={project} />
           </div>
 
           {/* Impact Statement */}
