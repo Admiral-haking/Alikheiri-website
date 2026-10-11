@@ -68,6 +68,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
             <p className="text-xs text-slate-400 font-mono">{t.resume.subtitle}</p>
           </div>
           <div className="flex items-center gap-2">
+            <a
+              href="/resume.pdf"
+              download="AliKheiri-Resume.pdf"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">PDF</span>
+            </a>
             <button
               onClick={handlePrint}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-mono transition-colors"

@@ -13,15 +13,22 @@ export const GithubSection: React.FC = () => {
   const [repos, setRepos] = useState<GitHubRepo[]>(fallbackGitHubRepos);
   const [loading, setLoading] = useState(false);
   const [totalStars, setTotalStars] = useState(7);
+  const [profileStats, setProfileStats] = useState({ publicRepos: 50, followers: 0, following: 7 });
+  const [error, setError] = useState<string | null>(null);
 
   const fetchGithubRepos = async (userToFetch: string) => {
     playSound('click');
     setLoading(true);
+    setError(null);
     try {
-      const res = await fetch(`https://api.github.com/users/${userToFetch}/repos?sort=updated&per_page=4`);
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
+      const [profileRes, reposRes] = await Promise.all([
+        fetch(`https://api.github.com/users/${userToFetch}`),
+        fetch(`https://api.github.com/users/${userToFetch}/repos?sort=updated&per_page=8`)
+      ]);
+      if (!profileRes.ok || !reposRes.ok) throw new Error('GitHub API unavailable');
+      const profile = await profileRes.json();
+      const data = await reposRes.json();
+      if (Array.isArray(data) && data.length > 0) {
           const formatted: GitHubRepo[] = data.map((r: any) => ({
             id: r.id,
             name: r.name,
@@ -36,30 +43,22 @@ export const GithubSection: React.FC = () => {
           setRepos(formatted);
           const starsSum = formatted.reduce((acc, r) => acc + r.stars, 0);
           setTotalStars(starsSum);
-        }
+          setProfileStats({ publicRepos: profile.public_repos, followers: profile.followers, following: profile.following });
       }
     } catch {
-      // Graceful fallback to verified repositories
+      setError(t.github.error);
       setRepos(fallbackGitHubRepos);
     } finally {
       setLoading(false);
     }
   };
 
-  // Simulated 52-week commit activity matrix (7 rows x 52 cols)
-  const commitMatrix = Array.from({ length: 52 }, (_, colIdx) =>
-    Array.from({ length: 7 }, (_, rowIdx) => {
-      const seed = Math.sin(colIdx * 7 + rowIdx) * 10000;
-      const rand = seed - Math.floor(seed);
-      if (rand < 0.25) return 0;
-      if (rand < 0.55) return 1;
-      if (rand < 0.85) return 2;
-      return 3;
-    })
-  );
+  useEffect(() => {
+    void fetchGithubRepos('Admiral-haking');
+  }, []);
 
   return (
-    <section id="github" className="py-24 relative overflow-hidden border-t border-white/[0.06]">
+    <section id="github" aria-busy={loading} className="py-24 relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
@@ -100,44 +99,20 @@ export const GithubSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Git Commit Calendar Heatmap Strip */}
+        {/* Live profile snapshot */}
         <div className="p-6 rounded-2xl glass-panel border border-white/[0.08] mb-8 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
             <div className="flex items-center gap-2 text-white font-semibold">
               <Github className="w-4 h-4 text-cyan-400" />
-              <span>50 public repositories on GitHub</span>
+              <span>{profileStats.publicRepos} public repositories on GitHub</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-400 text-[11px]">
-              <span>Less</span>
-              <span className="w-2.5 h-2.5 rounded-xs bg-white/10" />
-              <span className="w-2.5 h-2.5 rounded-xs bg-cyan-900" />
-              <span className="w-2.5 h-2.5 rounded-xs bg-cyan-500" />
-              <span className="w-2.5 h-2.5 rounded-xs bg-cyan-300" />
-              <span>More</span>
+            <div className="flex flex-wrap gap-4 text-slate-400 text-[11px]">
+              <span><strong className="text-cyan-300">{totalStars}</strong> stars in latest repos</span>
+              <span><strong className="text-cyan-300">{profileStats.followers}</strong> followers</span>
+              <span><strong className="text-cyan-300">{profileStats.following}</strong> following</span>
             </div>
           </div>
-
-          {/* Commit Matrix View */}
-          <div className="overflow-x-auto pb-2 scrollbar-none">
-            <div className="grid grid-flow-col grid-rows-7 gap-1 min-w-[680px]">
-              {commitMatrix.map((week, wIdx) =>
-                week.map((level, dIdx) => {
-                  let bgClass = 'bg-white/5';
-                  if (level === 1) bgClass = 'bg-cyan-950 border border-cyan-800/40';
-                  if (level === 2) bgClass = 'bg-cyan-600/70 shadow-[0_0_4px_rgba(0,245,255,0.3)]';
-                  if (level === 3) bgClass = 'bg-cyan-400 shadow-[0_0_8px_rgba(0,245,255,0.6)]';
-
-                  return (
-                    <div
-                      key={`${wIdx}-${dIdx}`}
-                      className={`w-3 h-3 rounded-[2px] transition-colors hover:scale-125 ${bgClass}`}
-                      title={`Activity index: ${level}`}
-                    />
-                  );
-                })
-              )}
-            </div>
-          </div>
+          {error && <p className="text-xs text-amber-300 border border-amber-500/20 bg-amber-500/5 rounded-lg px-3 py-2">{error}</p>}
         </div>
 
         {/* Repository Cards Grid */}

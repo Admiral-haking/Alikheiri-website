@@ -89,7 +89,10 @@ export const translations = {
         fullstack: "Full-Stack Platforms",
         ai: "AI & Agent Systems",
         systems: "High-Throughput Systems",
-        creative: "Creative & WebGL"
+        creative: "Creative & WebGL",
+        security: "Security & IAM",
+        web: "Web Applications",
+        automation: "Automation"
       },
       challengeTitle: "The Engineering Challenge",
       solutionTitle: "Architectural Solution",
@@ -130,6 +133,7 @@ export const translations = {
       viewOnGithub: "View on GitHub",
       totalContributions: "Annual Contributions",
       verifiedCommits: "Verified Git Commits"
+      ,error: "GitHub data is unavailable. Showing the saved snapshot."
     },
     blog: {
       kicker: "07. Engineering Insights",
@@ -290,7 +294,10 @@ export const translations = {
         fullstack: "پلتفرم‌های فول‌استک",
         ai: "سامانه‌های هوش مصنوعی",
         systems: "سیستم‌های پرسرعت و کلود",
-        creative: "طراحی خلاق و گرافیک وب"
+        creative: "طراحی خلاق و گرافیک وب",
+        security: "امنیت و IAM",
+        web: "اپلیکیشن‌های وب",
+        automation: "خودکارسازی"
       },
       challengeTitle: "چالش مهندسی",
       solutionTitle: "راهکار معماری",
@@ -331,6 +338,7 @@ export const translations = {
       viewOnGithub: "مشاهده در گیت‌هاب",
       totalContributions: "کامیت‌های سالانه",
       verifiedCommits: "کامیت‌های تایید شده"
+      ,error: "داده‌های گیت‌هاب در دسترس نیست؛ نسخه ذخیره‌شده نمایش داده می‌شود."
     },
     blog: {
       kicker: "۰۷. مقالات و دانش فنی",

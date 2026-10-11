@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { ArrowUp } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { CyberBackground } from './components/common/CyberBackground';
@@ -30,6 +31,8 @@ import { Project, BlogPost } from './types/portfolio';
 
 const PortfolioContent: React.FC = () => {
   const { isRtl } = useLanguage();
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showTopButton, setShowTopButton] = useState(false);
 
   // Modals state
   const [cmdPaletteOpen, setCmdPaletteOpen] = useState(false);
@@ -63,6 +66,18 @@ const PortfolioContent: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    const updateScrollState = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      setScrollProgress(progress);
+      setShowTopButton(window.scrollY > 560);
+    };
+    updateScrollState();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+    return () => window.removeEventListener('scroll', updateScrollState);
+  }, []);
+
   if (showNotFound) {
     return <NotFoundView onReturnHome={() => setShowNotFound(false)} />;
   }
@@ -72,6 +87,9 @@ const PortfolioContent: React.FC = () => {
       className="relative min-h-screen bg-[#050508] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
+      <div className="fixed top-0 left-0 right-0 z-[60] h-0.5 bg-white/5 pointer-events-none">
+        <div className="h-full bg-cyan-400 shadow-[0_0_10px_rgba(0,245,255,.8)] transition-[width] duration-150" style={{ width: `${scrollProgress}%` }} />
+      </div>
       {/* Dynamic 60fps Cyber Canvas Background */}
       <CyberBackground />
 
@@ -107,6 +125,16 @@ const PortfolioContent: React.FC = () => {
 
       {/* Footer */}
       <Footer />
+
+      {showTopButton && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-40 p-3 rounded-full glass-panel border border-cyan-500/30 text-cyan-300 hover:text-white hover:-translate-y-1 transition-all shadow-lg"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="w-4 h-4" />
+        </button>
+      )}
 
       {/* Quick Controls HUD Dock */}
       <QuickControls

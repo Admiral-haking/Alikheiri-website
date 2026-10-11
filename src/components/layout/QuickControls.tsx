@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Sparkles, Command, FileText } from 'lucide-react';
+import { Volume2, VolumeX, Command, FileText, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { AccentTheme } from '../../types/portfolio';
 
@@ -14,7 +14,7 @@ export const QuickControls: React.FC<QuickControlsProps> = ({
   onOpenResume,
   onShowToast
 }) => {
-  const { accent, setAccent, soundEnabled, toggleSound, playSound } = useTheme();
+  const { accent, setAccent, soundEnabled, toggleSound, playSound, theme, toggleTheme } = useTheme();
 
   const accents: { name: AccentTheme; color: string; label: string }[] = [
     { name: 'cyan', color: '#00F5FF', label: 'Neon Cyan' },
@@ -48,6 +48,15 @@ export const QuickControls: React.FC<QuickControlsProps> = ({
       </div>
 
       {/* Audio Sound FX Toggle */}
+      <button
+        onClick={() => { toggleTheme(); playSound('click'); onShowToast(theme === 'dark' ? 'Light mode enabled' : 'Dark mode enabled'); }}
+        title="Toggle light and dark mode"
+        className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+        aria-label="Toggle light and dark mode"
+      >
+        {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+      </button>
+
       <button
         onClick={() => {
           toggleSound();

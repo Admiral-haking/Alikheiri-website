@@ -3,6 +3,8 @@ import { AccentTheme } from '../types/portfolio';
 import { playCyberSound } from '../utils/audio';
 
 interface ThemeContextType {
+  theme: 'dark' | 'light';
+  toggleTheme: () => void;
   accent: AccentTheme;
   setAccent: (accent: AccentTheme) => void;
   soundEnabled: boolean;
@@ -15,6 +17,10 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem('alikheiri_portfolio_theme') === 'light') return 'light';
+    return 'dark';
+  });
   const [accent, setAccentState] = useState<AccentTheme>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('alikheiri_portfolio_accent') as AccentTheme;
@@ -39,6 +45,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     document.documentElement.setAttribute('data-accent', accent);
     localStorage.setItem('alikheiri_portfolio_accent', accent);
   }, [accent]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('alikheiri_portfolio_theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     localStorage.setItem('alikheiri_portfolio_sound', String(soundEnabled));
@@ -67,9 +78,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setCursorGlow(prev => !prev);
   };
 
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+
   return (
     <ThemeContext.Provider
       value={{
+        theme,
+        toggleTheme,
         accent,
         setAccent,
         soundEnabled,

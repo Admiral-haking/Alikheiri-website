@@ -143,15 +143,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <Github className="w-3.5 h-3.5" />
               <span>{t.projects.sourceCode}</span>
             </a>
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-medium rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              <span>{t.projects.liveDemo}</span>
-            </a>
+            {project.demoUrl && project.demoUrl !== project.githubUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-medium rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black transition-colors"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>{t.projects.liveDemo}</span>
+              </a>
+            )}
           </div>
           <button
             onClick={onClose}

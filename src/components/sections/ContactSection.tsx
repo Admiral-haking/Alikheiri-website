@@ -117,6 +117,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 )}
               </button>
 
+              <div className="flex flex-wrap gap-2 text-[11px] font-mono">
+                <a href="https://www.linkedin.com/in/ali-khairi-6016b1336/" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-colors">LinkedIn</a>
+                <a href="https://t.me/REYZERZZ" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-colors">Telegram</a>
+                <a href="https://teamcore.ir" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-colors">teamcore.ir</a>
+                <a href="https://ghlbedovom.com" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-white/10 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-colors">ghlbedovom.com</a>
+              </div>
+
               {/* Status details */}
               <div className="pt-4 border-t border-white/5 space-y-3 text-xs font-mono text-slate-300">
                 <div className="flex items-center gap-2.5">

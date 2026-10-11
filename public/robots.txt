@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://github.com/Admiral-haking/Alikheiri-website/sitemap.xml

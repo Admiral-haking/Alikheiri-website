@@ -20,12 +20,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
     { id: 'all', label: t.projects.categories.all },
     { id: 'fullstack', label: t.projects.categories.fullstack },
     { id: 'ai', label: t.projects.categories.ai },
-    { id: 'systems', label: t.projects.categories.systems }
+    { id: 'systems', label: t.projects.categories.systems },
+    { id: 'security', label: t.projects.categories.security },
+    { id: 'web', label: t.projects.categories.web },
+    { id: 'automation', label: t.projects.categories.automation }
   ];
 
   const filteredProjects = portfolioProjects.filter(p => {
     if (activeFilter === 'all') return true;
-    return p.category === activeFilter;
+    if (['fullstack', 'ai', 'systems', 'creative'].includes(activeFilter)) return p.category === activeFilter;
+    return p.tags.some(tag => tag.toLowerCase().includes(activeFilter));
   });
 
   return (
@@ -168,15 +172,17 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                       >
                         <Github className="w-4 h-4" />
                       </a>
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-colors"
-                        title={t.projects.liveDemo}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
+                      {project.demoUrl && project.demoUrl !== project.githubUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-colors"
+                          title={t.projects.liveDemo}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

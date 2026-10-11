@@ -21,7 +21,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'kronos', title: 'KRONOS', titleFa: 'کرونوس',
     subtitle: 'TypeScript application', subtitleFa: 'اپلیکیشن TypeScript', category: 'fullstack',
-    tags: ['TypeScript', 'Application Development'],
+    tags: ['TypeScript', 'Application Development', 'Web'],
     description: 'A public TypeScript application project exploring product development from idea to implementation.',
     descriptionFa: 'پروژه عمومی TypeScript برای تجربه و توسعه محصول از ایده تا پیاده‌سازی.',
     challenge: 'Keep the product direction understandable while the implementation evolves.',
@@ -66,7 +66,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'ai-orchestra-pro', title: 'AI Orchestra Pro', titleFa: 'AI Orchestra Pro',
     subtitle: 'Enterprise multi-agent LLM orchestration', subtitleFa: 'هماهنگ‌سازی ایجنت‌های LLM سازمانی', category: 'ai',
-    tags: ['Python', 'LLM', 'Agents', 'Orchestration'],
+    tags: ['Python', 'LLM', 'Agents', 'Orchestration', 'Automation'],
     description: 'An enterprise-grade multi-agent LLM orchestration project published by AliKheiri.',
     descriptionFa: 'پروژه هماهنگ‌سازی چندایجنت LLM در سطح سازمانی که توسط علی خیری منتشر شده است.',
     challenge: 'Coordinate specialized AI capabilities as a system with explicit responsibilities.',
