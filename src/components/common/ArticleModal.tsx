@@ -92,7 +92,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ post, onClose, onSho
           </div>
 
           {/* Formatted Content */}
-          <div className="text-sm text-slate-300 leading-relaxed font-sans space-y-4 whitespace-pre-line font-normal">
+          <div className="readable-copy rtl-safe text-sm text-slate-300 leading-relaxed font-sans space-y-4 whitespace-pre-line font-normal">
             {content}
           </div>
 

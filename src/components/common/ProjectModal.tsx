@@ -78,16 +78,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
 
           {/* Overview text */}
-          <p className="text-sm text-slate-300 leading-relaxed font-sans">{description}</p>
+          <p className="readable-copy rtl-safe text-sm text-slate-300 leading-relaxed font-sans">{description}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 project-detail-card">
               <div className="text-[10px] uppercase tracking-widest text-cyan-400 font-mono mb-2">{t.projects.roleLabel}</div>
-              <p className="text-xs text-slate-200 leading-relaxed">{role}</p>
+              <p className="readable-copy rtl-safe text-xs text-slate-200 leading-relaxed">{role}</p>
             </div>
             <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 project-detail-card">
               <div className="text-[10px] uppercase tracking-widest text-cyan-400 font-mono mb-2">{t.projects.statusLabel}</div>
-              <p className="text-xs text-slate-200 leading-relaxed">{status}</p>
+              <p className="readable-copy rtl-safe text-xs text-slate-200 leading-relaxed">{status}</p>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <Zap className="w-3.5 h-3.5" />
                 <span>{t.projects.challengeTitle}</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">{challenge}</p>
+              <p className="readable-copy rtl-safe text-xs text-slate-300 leading-relaxed">{challenge}</p>
             </div>
 
             <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5 space-y-2">
@@ -118,7 +118,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <Zap className="w-3.5 h-3.5" />
                 <span>{t.projects.solutionTitle}</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">{solution}</p>
+              <p className="readable-copy rtl-safe text-xs text-slate-300 leading-relaxed">{solution}</p>
             </div>
           </div>
 
@@ -127,7 +127,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             <div className="text-cyan-400 text-xs font-mono font-semibold tracking-wider uppercase">
               {t.projects.impactTitle}
             </div>
-            <p className="text-xs text-slate-200 leading-relaxed">{impact}</p>
+            <p className="readable-copy rtl-safe text-xs text-slate-200 leading-relaxed">{impact}</p>
           </div>
         </div>
 
