@@ -128,7 +128,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
               Executive Summary
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Software engineer with 7+ years of experience directing high-throughput distributed microservices, stateful multi-agent AI networks, and sub-100ms client applications. Proven track record of slashing tail latencies, reducing infrastructure cloud expenditure, and authoring fault-tolerant distributed event pipelines for enterprise users.
+              Computer engineering student and full-stack developer based in Mashhad, Iran. I build Node.js and Next.js applications, REST APIs, backend services, and practical AI security systems with a focus on clean architecture and safe data handling.
             </p>
           </div>
 

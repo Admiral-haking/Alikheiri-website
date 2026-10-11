@@ -39,33 +39,33 @@ export const translations = {
     },
     about: {
       kicker: "01. Engineering DNA",
-      title: "Building at the intersection of scale, intelligence, and visual discipline",
-      bio1: "I am a senior full-stack architect and creative engineer with over 7 years of experience building mission-critical distributed platforms, AI agent networks, and high-frequency real-time web applications.",
-      bio2: "My philosophy is rooted in architectural resilience: systems should not only withstand massive throughput but remain joyful to operate. When building client interfaces, I prioritize sub-100ms response latencies, typographic rigor, and GPU-accelerated motion.",
-      location: "Iran · Open to remote collaboration",
+      title: "Building useful backend systems and defensive AI tools",
+      bio1: "I am a computer engineering student at Quchan University of Technology based in Mashhad, Iran. I build backend systems, modern web applications, and practical AI solutions through freelance work and research.",
+      bio2: "My interests are defensive AI, data security, backend architecture, and systems that remain understandable in production. I am fluent in English, learning German, and open to backend internships and open-source collaboration.",
+      location: "Mashhad, Iran · Open to remote collaboration",
       principlesTitle: "Core Operating Principles",
       principles: [
         {
-          title: "Sub-100ms Interaction Budgets",
-          desc: "Every UI interaction, query latency, and state transition is optimized for immediate perceptible feedback."
+          title: "Clean Backend Foundations",
+          desc: "I care about clear boundaries, readable code, and APIs that are easy to operate and extend."
         },
         {
-          title: "Resilient Distributed Foundations",
-          desc: "Designing event-driven microservices with graceful degradation, zero single-points-of-failure, and linear horizontal scaling."
+          title: "Data Security by Design",
+          desc: "Authentication, access control, auditability, and safe data handling belong in the architecture from the beginning."
         },
         {
-          title: "Human-Centered Cyber Aesthetics",
-          desc: "Infusing high-tech cinematic clarity without clutter, respecting WCAG contrast, typography, and clean metadata."
+          title: "Learning by Building",
+          desc: "Each project turns a concept from systems, AI, or security into something observable and testable."
         },
         {
-          title: "Production-Grade AI Workflows",
-          desc: "Implementing deterministic guardrails, structured JSON outputs, and vector-routed agent graphs."
+          title: "Research with Practical Output",
+          desc: "Research is most useful when it becomes a working prototype, a documented experiment, or a reusable tool."
         }
       ]
     },
     stack: {
       kicker: "02. Technical Arsenal",
-      title: "Modern technologies deployed in production environments",
+      title: "Tools I use to learn and build",
       searchPlaceholder: "Search technologies (e.g. TypeScript, PyTorch, Docker)...",
       categories: {
         all: "All Technologies",
@@ -82,8 +82,8 @@ export const translations = {
     },
     projects: {
       kicker: "03. Selected Works",
-      title: "Mission-critical architectures and immersive web experiences",
-      subtitle: "Production software engineered for throughput, security, and delightful user experiences.",
+      title: "Selected projects from my public work",
+      subtitle: "Backend, AI, security, automation, and web projects built while learning and working.",
       categories: {
         all: "All Works",
         fullstack: "Full-Stack Platforms",
@@ -101,7 +101,7 @@ export const translations = {
     },
     experience: {
       kicker: "04. Career Evolution",
-      title: "Vertical timeline of leadership, architecture, and impact",
+      title: "Education, work, and research in progress",
       downloadResume: "Download Full Resume",
       present: "Present",
       keyAchievements: "Key Achievements",
@@ -109,7 +109,7 @@ export const translations = {
     },
     services: {
       kicker: "05. Capabilities & Offerings",
-      title: "Consulting, engineering leadership, and bespoke system development",
+      title: "Ways I can help with a technical project",
       calculatorTitle: "Interactive Scope & Estimation Estimator",
       calculatorDesc: "Select services to customize your engineering engagement blueprint:",
       selectOption: "Select service",
@@ -142,18 +142,18 @@ export const translations = {
     contact: {
       kicker: "08. Direct Communication",
       title: "Let's build something extraordinary together",
-      subtitle: "Available for engineering leadership roles, architecture contracts, and select advisory engagements.",
+      subtitle: "Open to backend internships, freelance work, research collaboration, and open-source projects.",
       nameLabel: "Your Name",
       namePlaceholder: "e.g. Alex Mercer",
       emailLabel: "Email Address",
-      emailPlaceholder: "alex@company.com",
+      emailPlaceholder: "you@example.com",
       projectTypeLabel: "Engagement Type",
       projectTypeOptions: [
-        "Full-Time Principal / Architect Role",
-        "High-Performance Web Architecture Contract",
-        "AI Agent Network & LLM Integration",
-        "System Audit & Latency Optimization",
-        "General Advisory / Consultation"
+        "Backend internship opportunity",
+        "Web application or REST API project",
+        "AI security or MLOps research collaboration",
+        "Authentication and IAM system",
+        "Open-source collaboration"
       ],
       messageLabel: "Project Brief & Objectives",
       messagePlaceholder: "Describe your system requirements, target timeline, and key challenges...",
@@ -348,11 +348,11 @@ export const translations = {
       emailPlaceholder: "sohrab@company.com",
       projectTypeLabel: "نوع همکاری",
       projectTypeOptions: [
-        "همکاری تمام‌وقت / معمار ارشد سیستم",
-        "قرارداد معماری پلتفرم وب پرسرعت",
-        "پیاده‌سازی شبکه ایجنت‌های هوش مصنوعی",
-        "ممیزی فنی و بهینه‌سازی تاخیر سیستم",
-        "مشاوره و هدایت تکنولوژی"
+        "فرصت کارآموزی بک‌اند",
+        "پروژه وب‌اپلیکیشن یا REST API",
+        "همکاری تحقیقاتی امنیت AI یا MLOps",
+        "سامانه احراز هویت و IAM",
+        "همکاری متن‌باز"
       ],
       messageLabel: "خلاصه و اهداف پروژه",
       messagePlaceholder: "توضیحاتی در مورد نیازمندی‌ها، مقیاس مورد نظر و چالش‌های فنی بنویسید...",

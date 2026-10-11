@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
         {/* Center: Social Links */}
         <div className="flex items-center gap-4 text-slate-400">
           <a
-            href="https://github.com"
+            href="https://github.com/Admiral-haking"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
             <Github className="w-4 h-4" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/ali-khairi-6016b1336/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
@@ -49,11 +49,11 @@ export const Footer: React.FC = () => {
             <Linkedin className="w-4 h-4" />
           </a>
           <a
-            href="https://twitter.com"
+            href="https://t.me/REYZERZZ"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
-            aria-label="X / Twitter"
+            aria-label="Telegram"
           >
             <Twitter className="w-4 h-4" />
           </a>
