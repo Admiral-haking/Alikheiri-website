@@ -28,6 +28,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const isRtl = language === 'fa';
     document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', language);
+    document.title = language === 'fa'
+      ? 'علی خیری | توسعه‌دهنده بک‌اند و فول‌استک'
+      : 'AliKheiri | Backend & Full-Stack Developer';
   }, [language]);
 
   const setLanguage = (lang: Language) => {

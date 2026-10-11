@@ -65,6 +65,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           {/* Interactive Visual Canvas Container */}
           <div className="h-64 sm:h-72 w-full rounded-xl overflow-hidden border border-white/10 bg-[#090a12]">
             <ProjectVisual type={project.visualType} className="h-full w-full" isInteractive={true} />
+            {project.imageUrl && <img src={project.imageUrl} alt={`${title} GitHub preview`} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-screen pointer-events-none" />}
           </div>
 
           {/* Clean Unboxed Tags with Typographic Separator */}

@@ -16,7 +16,7 @@ export const portfolioProjects: Project[] = [
     impact: 'One of the most recently updated public projects in the profile.',
     impactFa: 'یکی از جدیدترین پروژه‌های عمومی به‌روزشده در پروفایل.',
     metrics: [{ label: 'Language', value: 'TS' }, { label: 'Stars', value: '0' }, { label: 'Status', value: 'Active' }],
-    githubUrl: `${owner}/PulseCore`, demoUrl: `${owner}/PulseCore`, featured: true, visualType: 'telemetry', role: 'System development and experimentation', roleFa: 'توسعه و آزمایش سامانه', status: 'Public · Active development', statusFa: 'عمومی · در حال توسعه'
+    githubUrl: `${owner}/PulseCore`, demoUrl: `${owner}/PulseCore`, featured: true, visualType: 'telemetry', role: 'System development and experimentation', roleFa: 'توسعه و آزمایش سامانه', status: 'Public · Active development', statusFa: 'عمومی · در حال توسعه', imageUrl: 'https://opengraph.githubassets.com/1/Admiral-haking/PulseCore'
   },
   {
     id: 'kronos', title: 'KRONOS', titleFa: 'کرونوس',
@@ -31,7 +31,7 @@ export const portfolioProjects: Project[] = [
     impact: 'A recently created public project in the AliKheiri portfolio.',
     impactFa: 'یک پروژه عمومی تازه‌ساخته‌شده در مجموعه کارهای علی خیری.',
     metrics: [{ label: 'Language', value: 'TS' }, { label: 'Stars', value: '0' }, { label: 'Visibility', value: 'Public' }],
-    githubUrl: `${owner}/KRONOS`, demoUrl: `${owner}/KRONOS`, featured: true, visualType: 'stream', role: 'Product engineering and iteration', roleFa: 'مهندسی و توسعه مرحله‌ای محصول', status: 'Public · Iterating', statusFa: 'عمومی · در حال تکمیل'
+    githubUrl: `${owner}/KRONOS`, demoUrl: `${owner}/KRONOS`, featured: true, visualType: 'stream', role: 'Product engineering and iteration', roleFa: 'مهندسی و توسعه مرحله‌ای محصول', status: 'Public · Iterating', statusFa: 'عمومی · در حال تکمیل', imageUrl: 'https://opengraph.githubassets.com/1/Admiral-haking/KRONOS'
   },
   {
     id: 'iam-sso', title: 'IAM SSO System', titleFa: 'سامانه IAM و SSO',
@@ -46,7 +46,7 @@ export const portfolioProjects: Project[] = [
     impact: 'A security-oriented project with a public source repository.',
     impactFa: 'پروژه‌ای امنیت‌محور با کد منبع عمومی.',
     metrics: [{ label: 'Focus', value: 'IAM' }, { label: 'Language', value: 'TS' }, { label: 'Stars', value: '0' }],
-    githubUrl: `${owner}/IAM-SSO-System`, demoUrl: `${owner}/IAM-SSO-System`, featured: true, visualType: 'neural', role: 'Identity, access, and security architecture', roleFa: 'معماری هویت، دسترسی و امنیت', status: 'Public · In development', statusFa: 'عمومی · در حال توسعه'
+    githubUrl: `${owner}/IAM-SSO-System`, demoUrl: `${owner}/IAM-SSO-System`, featured: true, visualType: 'neural', role: 'Identity, access, and security architecture', roleFa: 'معماری هویت، دسترسی و امنیت', status: 'Public · In development', statusFa: 'عمومی · در حال توسعه', imageUrl: 'https://opengraph.githubassets.com/1/Admiral-haking/IAM-SSO-System'
   },
   {
     id: 'mlops-from-scratch', title: 'MLOps From Scratch', titleFa: 'MLOps از صفر',
@@ -61,7 +61,7 @@ export const portfolioProjects: Project[] = [
     impact: 'A concrete AI/ML project with a documented public description.',
     impactFa: 'یک پروژه واقعی AI/ML با توضیح عمومی مستند.',
     metrics: [{ label: 'Domain', value: 'NLP' }, { label: 'Language', value: 'Python' }, { label: 'Stars', value: '1' }],
-    githubUrl: `${owner}/mlops-from-scratch`, demoUrl: `${owner}/mlops-from-scratch`, featured: false, visualType: 'quantum', role: 'ML pipeline design and observability', roleFa: 'طراحی و مشاهده‌پذیری خط لوله ML', status: 'Public · Research project', statusFa: 'عمومی · پروژه تحقیقاتی'
+    githubUrl: `${owner}/mlops-from-scratch`, demoUrl: `${owner}/mlops-from-scratch`, featured: false, visualType: 'quantum', role: 'ML pipeline design and observability', roleFa: 'طراحی و مشاهده‌پذیری خط لوله ML', status: 'Public · Research project', statusFa: 'عمومی · پروژه تحقیقاتی', imageUrl: 'https://opengraph.githubassets.com/1/Admiral-haking/mlops-from-scratch'
   },
   {
     id: 'ai-orchestra-pro', title: 'AI Orchestra Pro', titleFa: 'AI Orchestra Pro',
@@ -76,7 +76,7 @@ export const portfolioProjects: Project[] = [
     impact: 'A clear example of the profile’s focus on practical AI systems.',
     impactFa: 'نمونه‌ای روشن از تمرکز پروفایل روی سامانه‌های عملی هوش مصنوعی.',
     metrics: [{ label: 'Domain', value: 'AI' }, { label: 'Language', value: 'Python' }, { label: 'Stars', value: '0' }],
-    githubUrl: `${owner}/ai-orchestra-pro`, demoUrl: `${owner}/ai-orchestra-pro`, featured: false, visualType: 'neural', role: 'Multi-agent orchestration research', roleFa: 'تحقیق در هماهنگ‌سازی چندایجنت', status: 'Public · Experiment', statusFa: 'عمومی · آزمایشی'
+    githubUrl: `${owner}/ai-orchestra-pro`, demoUrl: `${owner}/ai-orchestra-pro`, featured: false, visualType: 'neural', role: 'Multi-agent orchestration research', roleFa: 'تحقیق در هماهنگ‌سازی چندایجنت', status: 'Public · Experiment', statusFa: 'عمومی · آزمایشی', imageUrl: 'https://opengraph.githubassets.com/1/Admiral-haking/ai-orchestra-pro'
   }
 ];
 

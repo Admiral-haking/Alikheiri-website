@@ -16,6 +16,8 @@ export const GithubSection: React.FC = () => {
   const [profileStats, setProfileStats] = useState({ publicRepos: 50, followers: 0, following: 7 });
   const [error, setError] = useState<string | null>(null);
 
+  const cacheKey = (user: string) => `github_snapshot_${user.toLowerCase()}`;
+
   const fetchGithubRepos = async (userToFetch: string) => {
     playSound('click');
     setLoading(true);
@@ -38,22 +40,42 @@ export const GithubSection: React.FC = () => {
             language: r.language || 'TypeScript',
             updatedAt: r.updated_at.split('T')[0],
             htmlUrl: r.html_url,
-            topics: r.topics || []
+            topics: r.topics || [],
+            license: r.license?.spdx_id || undefined
           }));
           setRepos(formatted);
           const starsSum = formatted.reduce((acc, r) => acc + r.stars, 0);
           setTotalStars(starsSum);
           setProfileStats({ publicRepos: profile.public_repos, followers: profile.followers, following: profile.following });
+          localStorage.setItem(cacheKey(userToFetch), JSON.stringify({ repos: formatted, stars: starsSum, profileStats: { publicRepos: profile.public_repos, followers: profile.followers, following: profile.following }, savedAt: Date.now() }));
       }
     } catch {
       setError(t.github.error);
-      setRepos(fallbackGitHubRepos);
+      const cached = localStorage.getItem(cacheKey(userToFetch));
+      if (cached) {
+        const snapshot = JSON.parse(cached);
+        setRepos(snapshot.repos);
+        setTotalStars(snapshot.stars);
+        setProfileStats(snapshot.profileStats);
+      } else setRepos(fallbackGitHubRepos);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    const cached = localStorage.getItem(cacheKey('Admiral-haking'));
+    if (cached) {
+      try {
+        const snapshot = JSON.parse(cached);
+        if (Date.now() - snapshot.savedAt < 10 * 60 * 1000) {
+          setRepos(snapshot.repos);
+          setTotalStars(snapshot.stars);
+          setProfileStats(snapshot.profileStats);
+          return;
+        }
+      } catch { /* fetch a fresh snapshot */ }
+    }
     void fetchGithubRepos('Admiral-haking');
   }, []);
 
@@ -120,7 +142,14 @@ export const GithubSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           dir={isRtl ? 'rtl' : 'ltr'}
         >
-          {repos.map(repo => (
+          {loading && Array.from({ length: 4 }, (_, index) => (
+            <div key={`skeleton-${index}`} className="p-6 rounded-2xl glass-panel border border-white/[0.08] space-y-5 animate-pulse" aria-hidden="true">
+              <div className="h-4 w-1/2 rounded bg-white/10" />
+              <div className="h-10 w-full rounded bg-white/10" />
+              <div className="h-3 w-3/4 rounded bg-white/10" />
+            </div>
+          ))}
+          {!loading && repos.map(repo => (
             <div
               key={repo.id}
               className="lift-on-hover p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-4"
@@ -161,6 +190,7 @@ export const GithubSection: React.FC = () => {
                     <GitFork className="w-3.5 h-3.5 text-slate-400" />
                     {repo.forks}
                   </span>
+                  {repo.license && <span className="text-slate-500">{repo.license}</span>}
                 </div>
                 <span className="text-[11px] text-slate-500">{repo.updatedAt}</span>
               </div>

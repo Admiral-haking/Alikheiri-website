@@ -26,6 +26,7 @@ export interface Project {
   roleFa?: string;
   status?: string;
   statusFa?: string;
+  imageUrl?: string;
 }
 
 export interface TechSkill {
@@ -95,4 +96,5 @@ export interface GitHubRepo {
   updatedAt: string;
   htmlUrl: string;
   topics: string[];
+  license?: string;
 }

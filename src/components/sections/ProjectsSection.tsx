@@ -103,6 +103,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                     type={project.visualType}
                     className="h-full w-full rounded-none border-none group-hover:scale-[1.02] transition-transform duration-300"
                   />
+                  {project.imageUrl && <img src={project.imageUrl} alt={`${title} GitHub preview`} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-screen pointer-events-none" />}
                   {/* Subtle hover prompt */}
                   <div className="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-md bg-black/60 border border-white/10 text-[11px] font-mono text-cyan-300 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                     <span>{t.projects.viewDetails}</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, Send } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
             className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
             aria-label="Telegram"
           >
-            <Twitter className="w-4 h-4" />
+            <Send className="w-4 h-4" />
           </a>
           <a
             href="mailto:alikheiri10313@gmail.com"
