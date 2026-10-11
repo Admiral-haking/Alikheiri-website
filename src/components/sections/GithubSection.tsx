@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Star, GitFork, ExternalLink, RefreshCw, Code2, CheckCircle2 } from 'lucide-react';
+import { Github, Star, GitFork, ExternalLink, RefreshCw, Code2, Activity } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { fallbackGitHubRepos } from '../../data/realPortfolioData';
@@ -15,6 +15,7 @@ export const GithubSection: React.FC = () => {
   const [totalStars, setTotalStars] = useState(7);
   const [profileStats, setProfileStats] = useState({ publicRepos: 50, followers: 0, following: 7 });
   const [error, setError] = useState<string | null>(null);
+  const [activity, setActivity] = useState<{ type: string; repo: string; date: string; url: string }[]>([]);
 
   const cacheKey = (user: string) => `github_snapshot_${user.toLowerCase()}`;
 
@@ -23,13 +24,17 @@ export const GithubSection: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const [profileRes, reposRes] = await Promise.all([
+      const [profileRes, reposRes, eventsRes] = await Promise.all([
         fetch(`https://api.github.com/users/${userToFetch}`),
-        fetch(`https://api.github.com/users/${userToFetch}/repos?sort=updated&per_page=8`)
+        fetch(`https://api.github.com/users/${userToFetch}/repos?sort=updated&per_page=8`),
+        fetch(`https://api.github.com/users/${userToFetch}/events/public?per_page=8`)
       ]);
       if (!profileRes.ok || !reposRes.ok) throw new Error('GitHub API unavailable');
       const profile = await profileRes.json();
       const data = await reposRes.json();
+      const events = eventsRes.ok ? await eventsRes.json() : [];
+      const activityEntries = Array.isArray(events) ? events.map((event: any) => ({ type: event.type.replace('Event', ''), repo: event.repo?.name || 'GitHub', date: event.created_at?.split('T')[0] || '', url: event.repo?.url?.replace('api.github.com/repos', 'github.com') || 'https://github.com' })).slice(0, 6) : [];
+      setActivity(activityEntries);
       if (Array.isArray(data) && data.length > 0) {
           const formatted: GitHubRepo[] = data.map((r: any) => ({
             id: r.id,
@@ -47,7 +52,7 @@ export const GithubSection: React.FC = () => {
           const starsSum = formatted.reduce((acc, r) => acc + r.stars, 0);
           setTotalStars(starsSum);
           setProfileStats({ publicRepos: profile.public_repos, followers: profile.followers, following: profile.following });
-          localStorage.setItem(cacheKey(userToFetch), JSON.stringify({ repos: formatted, stars: starsSum, profileStats: { publicRepos: profile.public_repos, followers: profile.followers, following: profile.following }, savedAt: Date.now() }));
+          localStorage.setItem(cacheKey(userToFetch), JSON.stringify({ repos: formatted, stars: starsSum, profileStats: { publicRepos: profile.public_repos, followers: profile.followers, following: profile.following }, activity: activityEntries, savedAt: Date.now() }));
       }
     } catch {
       setError(t.github.error);
@@ -57,6 +62,7 @@ export const GithubSection: React.FC = () => {
         setRepos(snapshot.repos);
         setTotalStars(snapshot.stars);
         setProfileStats(snapshot.profileStats);
+        setActivity(snapshot.activity || []);
       } else setRepos(fallbackGitHubRepos);
     } finally {
       setLoading(false);
@@ -72,6 +78,7 @@ export const GithubSection: React.FC = () => {
           setRepos(snapshot.repos);
           setTotalStars(snapshot.stars);
           setProfileStats(snapshot.profileStats);
+          setActivity(snapshot.activity || []);
           return;
         }
       } catch { /* fetch a fresh snapshot */ }
@@ -135,6 +142,23 @@ export const GithubSection: React.FC = () => {
             </div>
           </div>
           {error && <p className="text-xs text-amber-300 border border-amber-500/20 bg-amber-500/5 rounded-lg px-3 py-2">{error}</p>}
+        </div>
+
+        <div className="p-6 rounded-2xl glass-panel border border-white/[0.08] mb-8" dir={isRtl ? 'rtl' : 'ltr'}>
+          <div className="flex items-center gap-2 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+            <Activity className="w-4 h-4" />
+            <span>{t.github.activityTitle}</span>
+          </div>
+          {activity.length === 0 ? <p className="text-xs text-slate-400 font-sans">{t.github.activityEmpty}</p> : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {activity.map((event, index) => (
+                <a key={`${event.repo}-${event.date}-${index}`} href={event.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 hover:border-cyan-500/30 transition-colors">
+                  <span className="text-xs text-slate-200 font-mono truncate"><strong className="text-cyan-300">{event.type}</strong> · {event.repo}</span>
+                  <span className="text-[10px] text-slate-500 font-mono shrink-0">{event.date}</span>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Repository Cards Grid */}

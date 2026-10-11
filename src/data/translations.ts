@@ -136,7 +136,9 @@ export const translations = {
       viewOnGithub: "View on GitHub",
       totalContributions: "Annual Contributions",
       verifiedCommits: "Verified Git Commits"
-      ,error: "GitHub data is unavailable. Showing the saved snapshot."
+      ,error: "GitHub data is unavailable. Showing the saved snapshot.",
+      activityTitle: "Recent public activity",
+      activityEmpty: "No recent public activity is available."
     },
     blog: {
       kicker: "07. Engineering Insights",
@@ -344,7 +346,9 @@ export const translations = {
       viewOnGithub: "مشاهده در گیت‌هاب",
       totalContributions: "کامیت‌های سالانه",
       verifiedCommits: "کامیت‌های تایید شده"
-      ,error: "داده‌های گیت‌هاب در دسترس نیست؛ نسخه ذخیره‌شده نمایش داده می‌شود."
+      ,error: "داده‌های گیت‌هاب در دسترس نیست؛ نسخه ذخیره‌شده نمایش داده می‌شود.",
+      activityTitle: "فعالیت عمومی اخیر",
+      activityEmpty: "فعالیت عمومی اخیر در دسترس نیست."
     },
     blog: {
       kicker: "۰۷. مقالات و دانش فنی",
