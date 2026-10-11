@@ -5,9 +5,10 @@
     --accent-color: #00F5FF;
     --accent-glow: rgba(0, 245, 255, 0.4);
     --accent-rgb: 0, 245, 255;
-    --bg-dark: #050508;
-    --card-bg: rgba(13, 14, 23, 0.75);
-    --card-border: rgba(255, 255, 255, 0.08);
+    --bg-dark: #06070b;
+    --card-bg: rgba(15, 18, 28, 0.72);
+    --card-border: rgba(148, 163, 184, 0.14);
+    --surface-highlight: rgba(255, 255, 255, 0.055);
   }
 
   [data-accent="purple"] {
@@ -31,6 +32,8 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color-scheme: dark;
   }
 
   html[dir="rtl"] {
@@ -86,14 +89,17 @@
 
 /* Glassmorphism Panel */
 .glass-panel {
-  background: rgba(11, 12, 20, 0.72);
+  background: linear-gradient(145deg, rgba(17, 21, 33, 0.78), rgba(8, 10, 17, 0.78));
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--card-border);
+  box-shadow: inset 0 1px 0 var(--surface-highlight), 0 18px 55px rgba(0, 0, 0, 0.16);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 .glass-panel:hover {
   border-color: rgba(var(--accent-rgb), 0.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 22px 70px rgba(0, 0, 0, 0.24), 0 0 28px -14px var(--accent-glow);
 }
 
 .glass-panel-elevated {
@@ -101,6 +107,73 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-shell {
+  position: relative;
+}
+
+section[id] { scroll-margin-top: 5rem; }
+
+.section-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0 8% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), .34), transparent);
+  opacity: .7;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--accent-color);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.6rem;
+  height: 1px;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.lift-on-hover {
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.lift-on-hover:hover {
+  transform: translateY(-5px);
+}
+
+.accent-button {
+  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color) 68%, white));
+  box-shadow: 0 10px 28px -12px var(--accent-glow);
+  transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
+}
+
+.accent-button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -10px var(--accent-glow);
+}
+
+@keyframes ambient-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2%, -3%, 0) scale(1.06); }
+}
+
+.ambient-orb {
+  animation: ambient-drift 16s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .glass-panel { backdrop-filter: blur(12px); }
 }
 
 /* Subtle holographic scanline */

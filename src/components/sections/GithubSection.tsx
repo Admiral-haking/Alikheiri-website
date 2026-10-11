@@ -148,7 +148,7 @@ export const GithubSection: React.FC = () => {
           {repos.map(repo => (
             <div
               key={repo.id}
-              className="p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-4"
+              className="lift-on-hover p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">

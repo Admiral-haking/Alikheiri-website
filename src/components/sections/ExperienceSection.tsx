@@ -72,7 +72,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onOpenResu
 
                   {/* Timeline Card */}
                   <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-8">
-                    <div className="p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all space-y-4">
+                    <div className="lift-on-hover p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all space-y-4">
                       {/* Period & Location */}
                       <div className="flex items-center justify-between text-xs font-mono text-cyan-400">
                         <span className="font-semibold">{period}</span>

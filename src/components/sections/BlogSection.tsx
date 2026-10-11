@@ -93,7 +93,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onSelectPost }) => {
                   playSound('modal');
                   onSelectPost(post);
                 }}
-                className="p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all cursor-pointer group flex flex-col justify-between space-y-6"
+                className="lift-on-hover p-6 rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all cursor-pointer group flex flex-col justify-between space-y-6"
               >
                 <div className="space-y-4">
                   {/* Clean unboxed metadata with dot separators (Section 1.A) */}

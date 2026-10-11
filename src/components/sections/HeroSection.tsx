@@ -206,7 +206,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
       {/* Background cinematic overlay with scanlines */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/[0.04] via-transparent to-[#050508]" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="ambient-orb absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 my-auto">
@@ -250,7 +250,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={() => scrollTo('#work')}
-                className="px-6 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-mono font-semibold text-xs tracking-wide transition-all shadow-[0_0_20px_-3px_rgba(0,245,255,0.6)] flex items-center gap-2 cursor-pointer"
+                className="accent-button px-6 py-3 rounded-xl text-black font-mono font-semibold text-xs tracking-wide flex items-center gap-2 cursor-pointer"
               >
                 <span>{t.hero.exploreBtn}</span>
                 <ArrowDown className="w-4 h-4" />
@@ -268,7 +268,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             {/* Social Links */}
             <div className="pt-4 flex items-center gap-4 text-slate-400">
               <a
-                href="https://github.com"
+                href="https://github.com/Admiral-haking"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
@@ -277,7 +277,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ali-khairi-6016b1336/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
@@ -286,11 +286,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://t.me/REYZERZZ"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
-                aria-label="X / Twitter"
+                aria-label="Telegram"
               >
                 <Twitter className="w-4 h-4" />
               </a>
@@ -309,7 +309,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-2xl p-4 glass-panel border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
               <canvas ref={canvasRef} className="w-full h-full block" />
               <div className="absolute bottom-3 right-4 text-[10px] font-mono text-cyan-400/80 uppercase tracking-widest pointer-events-none">
-                Interactive Quantum Node
+                Backend · AI · Security
               </div>
             </div>
           </div>

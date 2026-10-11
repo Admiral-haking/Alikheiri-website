@@ -85,7 +85,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
             return (
               <div
                 key={project.id}
-                className="group rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all flex flex-col justify-between overflow-hidden"
+                className="group lift-on-hover rounded-2xl glass-panel border border-white/[0.08] hover:border-cyan-500/30 transition-all flex flex-col justify-between overflow-hidden"
               >
                 {/* Visual Preview Header */}
                 <div
