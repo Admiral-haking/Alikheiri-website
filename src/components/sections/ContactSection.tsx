@@ -48,7 +48,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) {
       playSound('warp');
@@ -59,11 +59,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     playSound('click');
     const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\n\n${message}`);
+    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+    if (endpoint) {
+      try {
+        const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ name, email, projectType, message }) });
+        if (!response.ok) throw new Error('Contact endpoint failed');
+        setIsSubmitting(false); setSubmitted(true); playSound('success'); onShowToast(t.contact.successTitle);
+        setName(''); setEmail(''); setMessage('');
+        return;
+      } catch {
+        onShowToast('Online form unavailable; opening your email client.');
+      }
+    }
     window.location.href = `mailto:alikheiri10313@gmail.com?subject=${subject}&body=${body}`;
-    setIsSubmitting(false);
-    setSubmitted(true);
-    playSound('success');
-    onShowToast(t.contact.successTitle);
+    setIsSubmitting(false); setSubmitted(true); playSound('success'); onShowToast(t.contact.successTitle);
   };
 
   return (

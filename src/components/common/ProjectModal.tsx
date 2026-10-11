@@ -135,7 +135,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Modal Action Footer */}
         <div className="flex items-center justify-between px-6 py-4 border-t border-white/10 bg-white/[0.02]">
           <div className="flex items-center gap-3">
-            <a
+            {project.githubUrl && <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -143,7 +143,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             >
               <Github className="w-3.5 h-3.5" />
               <span>{t.projects.sourceCode}</span>
-            </a>
+            </a>}
             {project.demoUrl && project.demoUrl !== project.githubUrl && (
               <a
                 href={project.demoUrl}

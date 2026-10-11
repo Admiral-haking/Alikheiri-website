@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://github.com/Admiral-haking/Alikheiri-website/sitemap.xml
+Sitemap: https://admiral-haking.github.io/Alikheiri-website/sitemap.xml

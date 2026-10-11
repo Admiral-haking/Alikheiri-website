@@ -165,7 +165,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                     </button>
 
                     <div className="flex items-center gap-2">
-                      <a
+                      {project.githubUrl && <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -174,7 +174,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                         aria-label={`${title} ${t.projects.sourceCode}`}
                       >
                         <Github className="w-4 h-4" />
-                      </a>
+                      </a>}
                       {project.demoUrl && project.demoUrl !== project.githubUrl && (
                         <a
                           href={project.demoUrl}

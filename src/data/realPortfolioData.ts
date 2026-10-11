@@ -77,6 +77,20 @@ export const portfolioProjects: Project[] = [
     impactFa: 'نمونه‌ای روشن از تمرکز پروفایل روی سامانه‌های عملی هوش مصنوعی.',
     metrics: [{ label: 'Domain', value: 'AI' }, { label: 'Language', value: 'Python' }, { label: 'Stars', value: '0' }],
     githubUrl: `${owner}/ai-orchestra-pro`, demoUrl: `${owner}/ai-orchestra-pro`, featured: false, visualType: 'neural', role: 'Multi-agent orchestration research', roleFa: 'تحقیق در هماهنگ‌سازی چندایجنت', status: 'Public · Experiment', statusFa: 'عمومی · آزمایشی', imageUrl: 'https://opengraph.githubassets.com/1/Admiral-haking/ai-orchestra-pro'
+  },
+  {
+    id: 'digital-brain', title: 'Digital Brain', titleFa: 'مغز دیجیتال', subtitle: 'Hybrid AI threat simulation system', subtitleFa: 'سامانه ترکیبی هوش مصنوعی برای شبیه‌سازی تهدید', category: 'ai',
+    tags: ['Java', 'Spring Boot', 'Python', 'FastAPI', 'AWS', 'Security'],
+    description: 'A hybrid AI system designed for threat simulation and defensive security research, deployed across three national and one international data center.',
+    descriptionFa: 'سامانه ترکیبی هوش مصنوعی برای شبیه‌سازی تهدید و تحقیق امنیت دفاعی که در سه دیتاسنتر ملی و یک دیتاسنتر بین‌المللی مستقر شده است.',
+    challenge: 'Connect AI models, microservices, and operational infrastructure into a system that can support security simulation work.',
+    challengeFa: 'اتصال مدل‌های هوش مصنوعی، میکروسرویس‌ها و زیرساخت عملیاتی برای پشتیبانی از شبیه‌سازی امنیتی.',
+    solution: 'Designed Java Spring Boot and Python FastAPI services with API integration, log management, model management, and AWS EC2/S3 infrastructure.',
+    solutionFa: 'طراحی سرویس‌های Java Spring Boot و Python FastAPI با اتصال API، مدیریت لاگ و مدل و زیرساخت AWS EC2/S3.',
+    impact: 'A long-running research and engineering project focused on defensive AI and data security.',
+    impactFa: 'پروژه‌ای تحقیقاتی و مهندسی با تمرکز بر هوش مصنوعی دفاعی و امنیت داده.',
+    metrics: [{ label: 'Scope', value: '4 data centers' }, { label: 'Services', value: 'Java + Python' }, { label: 'Focus', value: 'Security' }],
+    githubUrl: 'https://github.com/Admiral-haking', demoUrl: '', featured: true, visualType: 'neural', role: 'Full-stack engineering and AI research', roleFa: 'مهندسی فول‌استک و تحقیق هوش مصنوعی', status: 'Research · Private implementation', statusFa: 'تحقیقاتی · پیاده‌سازی خصوصی'
   }
 ];
 

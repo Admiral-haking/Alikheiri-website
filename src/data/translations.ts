@@ -61,7 +61,9 @@ export const translations = {
           title: "Research with Practical Output",
           desc: "Research is most useful when it becomes a working prototype, a documented experiment, or a reusable tool."
         }
-      ]
+      ],
+      learningTitle: "Currently learning",
+      learning: ["Distributed systems", "Advanced PostgreSQL", "OAuth2, OIDC & WebAuthn", "German language"]
     },
     stack: {
       kicker: "02. Technical Arsenal",
@@ -266,7 +268,9 @@ export const translations = {
           title: "هوش مصنوعی عملیاتی و ساختاریافته",
           desc: "پیاده‌سازی ایجنت‌های هوشمند با خروجی‌های معتبر و قطعی و مسیریابی برداری دقیق."
         }
-      ]
+      ],
+      learningTitle: "در حال یادگیری",
+      learning: ["سیستم‌های توزیع‌شده", "PostgreSQL پیشرفته", "OAuth2، OIDC و WebAuthn", "زبان آلمانی"]
     },
     stack: {
       kicker: "۰۲. زرادخانه فنی",

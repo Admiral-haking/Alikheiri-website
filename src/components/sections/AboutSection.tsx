@@ -105,6 +105,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume }) => {
                 ))}
               </div>
             </div>
+
+            <div className="pt-2 space-y-3">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">{t.about.learningTitle}</h3>
+              <div className="flex flex-wrap gap-2">
+                {t.about.learning.map(item => <span key={item} className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs text-slate-300 font-mono">{item}</span>)}
+              </div>
+            </div>
           </div>
         </div>
       </div>
