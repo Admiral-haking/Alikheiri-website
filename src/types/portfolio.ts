@@ -22,6 +22,10 @@ export interface Project {
   demoUrl: string;
   featured: boolean;
   visualType: 'neural' | 'telemetry' | 'quantum' | 'trading' | 'stream';
+  role?: string;
+  roleFa?: string;
+  status?: string;
+  statusFa?: string;
 }
 
 export interface TechSkill {

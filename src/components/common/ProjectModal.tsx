@@ -33,6 +33,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   const challenge = language === 'fa' ? project.challengeFa : project.challenge;
   const solution = language === 'fa' ? project.solutionFa : project.solution;
   const impact = language === 'fa' ? project.impactFa : project.impact;
+  const role = language === 'fa' ? project.roleFa : project.role;
+  const status = language === 'fa' ? project.statusFa : project.status;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200 overflow-y-auto">
@@ -59,7 +61,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Scrollable Content */}
-        <div className="p-6 overflow-y-auto space-y-6">
+        <div className="p-6 overflow-y-auto space-y-6 project-modal-content">
           {/* Interactive Visual Canvas Container */}
           <div className="h-64 sm:h-72 w-full rounded-xl overflow-hidden border border-white/10 bg-[#090a12]">
             <ProjectVisual type={project.visualType} className="h-full w-full" isInteractive={true} />
@@ -77,6 +79,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           {/* Overview text */}
           <p className="text-sm text-slate-300 leading-relaxed font-sans">{description}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 project-detail-card">
+              <div className="text-[10px] uppercase tracking-widest text-cyan-400 font-mono mb-2">{t.projects.roleLabel}</div>
+              <p className="text-xs text-slate-200 leading-relaxed">{role}</p>
+            </div>
+            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 project-detail-card">
+              <div className="text-[10px] uppercase tracking-widest text-cyan-400 font-mono mb-2">{t.projects.statusLabel}</div>
+              <p className="text-xs text-slate-200 leading-relaxed">{status}</p>
+            </div>
+          </div>
 
           {/* Key Metrics Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 px-5 rounded-xl bg-white/[0.02] border border-white/5">

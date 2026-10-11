@@ -163,9 +163,45 @@ section[id] { scroll-margin-top: 5rem; }
   box-shadow: 0 14px 34px -10px var(--accent-glow);
 }
 
+@keyframes modal-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.project-modal-content > * {
+  animation: modal-rise 480ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.project-modal-content > *:nth-child(2) { animation-delay: 50ms; }
+.project-modal-content > *:nth-child(3) { animation-delay: 100ms; }
+.project-modal-content > *:nth-child(4) { animation-delay: 150ms; }
+.project-modal-content > *:nth-child(5) { animation-delay: 200ms; }
+.project-modal-content > *:nth-child(6) { animation-delay: 250ms; }
+
+.project-detail-card {
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.project-detail-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--accent-rgb), .34);
+  background: rgba(var(--accent-rgb), .07);
+}
+
 @keyframes ambient-drift {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(2%, -3%, 0) scale(1.06); }
+}
+
+@keyframes soft-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.soft-float { animation: soft-float 6s ease-in-out infinite; }
+
+.reveal-up {
+  animation: modal-rise 700ms cubic-bezier(.2,.8,.2,1) both;
 }
 
 .ambient-orb {

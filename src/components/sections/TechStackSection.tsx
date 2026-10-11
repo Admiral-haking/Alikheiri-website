@@ -150,7 +150,7 @@ export const TechStackSection: React.FC = () => {
                   playSound('click');
                   setSelectedSkill(skill);
                 }}
-                className="p-5 rounded-xl glass-panel border border-white/[0.07] hover:border-cyan-500/30 transition-all cursor-pointer group flex flex-col justify-between space-y-4"
+                className="reveal-up lift-on-hover p-5 rounded-xl glass-panel border border-white/[0.07] hover:border-cyan-500/30 transition-all cursor-pointer group flex flex-col justify-between space-y-4"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">

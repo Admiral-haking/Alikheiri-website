@@ -306,7 +306,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
 
           {/* Right Column: Interactive 3D Holographic Geometry Sphere */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-2xl p-4 glass-panel border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
+            <div className="soft-float relative w-72 h-72 sm:w-96 sm:h-96 rounded-2xl p-4 glass-panel border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
               <canvas ref={canvasRef} className="w-full h-full block" />
               <div className="absolute bottom-3 right-4 text-[10px] font-mono text-cyan-400/80 uppercase tracking-widest pointer-events-none">
                 Backend · AI · Security

@@ -31,7 +31,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume }) => {
         >
           {/* Left Column: Avatar & Quick Info Card */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="relative rounded-2xl p-6 glass-panel border border-white/10 overflow-hidden group">
+            <div className="reveal-up relative rounded-2xl p-6 glass-panel border border-white/10 overflow-hidden group">
               {/* Profile Avatar Graphic */}
               <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-tr from-[#090b14] via-[#121626] to-[#0d1222] border border-cyan-500/20 flex items-center justify-center">
                 {/* Procedural Cybernetic Silhouette Avatar */}
