@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { CyberBackground } from './components/common/CyberBackground';
 import { CustomCursor } from './components/common/CustomCursor';
 import { Toast } from './components/common/Toast';
-import { CommandPalette } from './components/common/CommandPalette';
-import { ProjectModal } from './components/common/ProjectModal';
-import { ArticleModal } from './components/common/ArticleModal';
-import { ResumeModal } from './components/common/ResumeModal';
+const CommandPalette = lazy(() => import('./components/common/CommandPalette').then(module => ({ default: module.CommandPalette })));
+const ProjectModal = lazy(() => import('./components/common/ProjectModal').then(module => ({ default: module.ProjectModal })));
+const ArticleModal = lazy(() => import('./components/common/ArticleModal').then(module => ({ default: module.ArticleModal })));
+const ResumeModal = lazy(() => import('./components/common/ResumeModal').then(module => ({ default: module.ResumeModal })));
 import { Navbar } from './components/layout/Navbar';
 import { QuickControls } from './components/layout/QuickControls';
 import { Footer } from './components/layout/Footer';
@@ -27,7 +27,7 @@ import { GithubSection } from './components/sections/GithubSection';
 import { BlogSection } from './components/sections/BlogSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { NotFoundView } from './components/sections/NotFoundView';
-import { AdminPanel } from './components/common/AdminPanel';
+const AdminPanel = lazy(() => import('./components/common/AdminPanel').then(module => ({ default: module.AdminPanel })));
 import { portfolioProjects } from './data/realPortfolioData';
 import { Project, BlogPost } from './types/portfolio';
 
@@ -176,39 +176,38 @@ const PortfolioContent: React.FC = () => {
       />
 
       {/* Command Palette Overlay */}
-      <CommandPalette
-        isOpen={cmdPaletteOpen}
-        onClose={() => setCmdPaletteOpen(false)}
-        onOpenResume={() => setResumeOpen(true)}
-        onShowToast={showToast}
-        onToggleNotFound={() => setShowNotFound(true)}
-        onOpenAdmin={() => setAdminOpen(true)}
-      />
+      <Suspense fallback={null}>
+        <CommandPalette
+          isOpen={cmdPaletteOpen}
+          onClose={() => setCmdPaletteOpen(false)}
+          onOpenResume={() => setResumeOpen(true)}
+          onShowToast={showToast}
+          onToggleNotFound={() => setShowNotFound(true)}
+          onOpenAdmin={() => setAdminOpen(true)}
+        />
 
-      {adminOpen && <AdminPanel projects={projects} onClose={() => setAdminOpen(false)} onSave={next => { setProjects(next); localStorage.setItem('alikheiri_projects', JSON.stringify(next)); setAdminOpen(false); showToast('Portfolio content saved locally'); }} />}
+        {adminOpen && <AdminPanel projects={projects} onClose={() => setAdminOpen(false)} onSave={next => { setProjects(next); localStorage.setItem('alikheiri_projects', JSON.stringify(next)); setAdminOpen(false); showToast('Portfolio content saved locally'); }} />}
 
-      {/* Case Study Project Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => {
-          setSelectedProject(null);
-          if (window.location.hash.startsWith('#project/')) window.history.replaceState(null, '', window.location.pathname + window.location.search);
-        }}
-      />
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => {
+            setSelectedProject(null);
+            if (window.location.hash.startsWith('#project/')) window.history.replaceState(null, '', window.location.pathname + window.location.search);
+          }}
+        />
 
-      {/* Article Reader Modal */}
-      <ArticleModal
-        post={selectedArticle}
-        onClose={() => setSelectedArticle(null)}
-        onShowToast={showToast}
-      />
+        <ArticleModal
+          post={selectedArticle}
+          onClose={() => setSelectedArticle(null)}
+          onShowToast={showToast}
+        />
 
-      {/* Full Resume / CV Modal */}
-      <ResumeModal
-        isOpen={resumeOpen}
-        onClose={() => setResumeOpen(false)}
-        onShowToast={showToast}
-      />
+        <ResumeModal
+          isOpen={resumeOpen}
+          onClose={() => setResumeOpen(false)}
+          onShowToast={showToast}
+        />
+      </Suspense>
 
       {/* Toast Feedback */}
       {toastMessage && (
