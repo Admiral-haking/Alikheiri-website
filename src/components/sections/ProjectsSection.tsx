@@ -8,9 +8,10 @@ import { ProjectVisual } from '../common/ProjectVisual';
 
 interface ProjectsSectionProps {
   onSelectProject: (project: Project) => void;
+  projects?: Project[];
 }
 
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProject }) => {
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProject, projects = portfolioProjects }) => {
   const { t, isRtl, language } = useLanguage();
   const { playSound } = useTheme();
 
@@ -26,7 +27,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
     { id: 'automation', label: t.projects.categories.automation }
   ];
 
-  const filteredProjects = portfolioProjects.filter(p => {
+  const filteredProjects = projects.filter(p => {
     if (activeFilter === 'all') return true;
     if (['fullstack', 'ai', 'systems', 'creative'].includes(activeFilter)) return p.category === activeFilter;
     return p.tags.some(tag => tag.toLowerCase().includes(activeFilter));
@@ -170,6 +171,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                         rel="noopener noreferrer"
                         className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
                         title={t.projects.sourceCode}
+                        aria-label={`${title} ${t.projects.sourceCode}`}
                       >
                         <Github className="w-4 h-4" />
                       </a>
@@ -180,6 +182,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                           rel="noopener noreferrer"
                           className="p-2 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-colors"
                           title={t.projects.liveDemo}
+                          aria-label={`${title} ${t.projects.liveDemo}`}
                         >
                           <ExternalLink className="w-4 h-4" />
                         </a>

@@ -165,6 +165,7 @@ export const GithubSection: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-1 rounded-md text-slate-400 hover:text-cyan-400 transition-colors"
+                    aria-label={`Open ${repo.name} on GitHub`}
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>

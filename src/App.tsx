@@ -27,6 +27,8 @@ import { GithubSection } from './components/sections/GithubSection';
 import { BlogSection } from './components/sections/BlogSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { NotFoundView } from './components/sections/NotFoundView';
+import { AdminPanel } from './components/common/AdminPanel';
+import { portfolioProjects } from './data/realPortfolioData';
 import { Project, BlogPost } from './types/portfolio';
 
 const PortfolioContent: React.FC = () => {
@@ -40,6 +42,13 @@ const PortfolioContent: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<BlogPost | null>(null);
   const [showNotFound, setShowNotFound] = useState(false);
+  const [adminOpen, setAdminOpen] = useState(() => window.location.hash === '#admin');
+  const [projects, setProjects] = useState<Project[]>(() => {
+    try {
+      const saved = localStorage.getItem('alikheiri_projects');
+      return saved ? JSON.parse(saved) : portfolioProjects;
+    } catch { return portfolioProjects; }
+  });
 
   // Initial service selection from calculator to contact form
   const [selectedServiceTitles, setSelectedServiceTitles] = useState<string[]>([]);
@@ -107,7 +116,7 @@ const PortfolioContent: React.FC = () => {
         <HeroSection onOpenResume={() => setResumeOpen(true)} />
         <AboutSection onOpenResume={() => setResumeOpen(true)} />
         <TechStackSection />
-        <ProjectsSection onSelectProject={p => setSelectedProject(p)} />
+        <ProjectsSection projects={projects} onSelectProject={p => setSelectedProject(p)} />
         <ExperienceSection onOpenResume={() => setResumeOpen(true)} />
         <ServicesSection
           onSelectServicesForContact={titles => {
@@ -150,7 +159,10 @@ const PortfolioContent: React.FC = () => {
         onOpenResume={() => setResumeOpen(true)}
         onShowToast={showToast}
         onToggleNotFound={() => setShowNotFound(true)}
+        onOpenAdmin={() => setAdminOpen(true)}
       />
+
+      {adminOpen && <AdminPanel projects={projects} onClose={() => setAdminOpen(false)} onSave={next => { setProjects(next); localStorage.setItem('alikheiri_projects', JSON.stringify(next)); setAdminOpen(false); showToast('Portfolio content saved locally'); }} />}
 
       {/* Case Study Project Modal */}
       <ProjectModal

@@ -25,6 +25,7 @@ interface CommandPaletteProps {
   onOpenResume: () => void;
   onShowToast: (msg: string) => void;
   onToggleNotFound?: () => void;
+  onOpenAdmin?: () => void;
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({
@@ -33,6 +34,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onOpenResume,
   onShowToast,
   onToggleNotFound
+  ,onOpenAdmin
 }) => {
   const { t, language, setLanguage, isRtl } = useLanguage();
   const { accent, setAccent, soundEnabled, toggleSound, playSound } = useTheme();
@@ -107,6 +109,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         onClose();
         if (onToggleNotFound) onToggleNotFound();
       }
+    },
+    {
+      id: 'act-admin',
+      label: 'Open portfolio content manager',
+      icon: Wrench,
+      action: () => { onClose(); onOpenAdmin?.(); }
     }
   ];
 
