@@ -76,7 +76,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       label: t.commandPalette.copyEmailAction,
       icon: Mail,
       action: () => {
-        navigator.clipboard.writeText('kian.vance.dev@gmail.com');
+        navigator.clipboard.writeText('alikheiri10313@gmail.com');
         onShowToast(t.contact.emailCopied);
         onClose();
       }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, Search, ArrowUpRight, Clock, Calendar, ThumbsUp } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { sampleBlogPosts } from '../../data/portfolioData';
+import { sampleBlogPosts } from '../../data/realContentData';
 import { BlogPost } from '../../types/portfolio';
 
 interface BlogSectionProps {

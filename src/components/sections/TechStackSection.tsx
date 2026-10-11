@@ -27,7 +27,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { techSkills } from '../../data/portfolioData';
+import { techSkills } from '../../data/realProfileData';
 import { TechSkill } from '../../types/portfolio';
 
 // Map icon names to Lucide icons

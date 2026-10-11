@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { X, Printer, Download, MapPin, Mail, Globe, Award, GraduationCap, Briefcase } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { experiences, techSkills } from '../../data/portfolioData';
+import { experiences, techSkills } from '../../data/realProfileData';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -36,10 +36,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
     playSound('click');
     const resumeData = {
       name: 'AliKheiri',
-      role: 'Principal Systems Architect & Creative Full-Stack Engineer',
+      role: 'Backend Engineer in Progress & Computer Science Student',
       contact: {
-        email: 'kian.vance.dev@gmail.com',
-        location: 'San Francisco, CA / Remote Worldwide',
+        email: 'alikheiri10313@gmail.com',
+        location: 'Iran / Remote',
         website: 'https://github.com/Admiral-haking'
       },
       skills: techSkills.map(s => ({ name: s.name, category: s.category, level: s.level })),
@@ -49,7 +49,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Kian_Vance_Resume_Data.json';
+    a.download = 'AliKheiri_Resume_Data.json';
     a.click();
     URL.revokeObjectURL(url);
     onShowToast('Resume JSON export downloaded');
@@ -101,23 +101,23 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
                 AliKheiri
               </h1>
               <span className="text-xs font-mono text-cyan-400 font-semibold tracking-wide">
-                Senior Full-Stack Architect & Creative Technologist
+                Backend Engineer in Progress · CS Student
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-mono">
               <span className="flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                San Francisco, CA & Remote
+                Iran · Remote
               </span>
               <span>·</span>
               <span className="flex items-center gap-1">
                 <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                kian.vance.dev@gmail.com
+                alikheiri10313@gmail.com
               </span>
               <span>·</span>
               <span className="flex items-center gap-1">
                 <Globe className="w-3.5 h-3.5 text-cyan-400" />
-                https://kianvance.dev
+                https://github.com/Admiral-haking
               </span>
             </div>
           </div>
@@ -191,18 +191,18 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
             </div>
           </div>
 
-          {/* Education & Honors */}
+          {/* Education */}
           <div className="space-y-3 pt-2">
             <h3 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold flex items-center gap-2">
               <GraduationCap className="w-3.5 h-3.5" />
-              Education & Honors
+              Education
             </h3>
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
               <div className="flex justify-between items-center text-xs font-mono">
-                <span className="text-white font-bold">B.S. in Computer Science & Artificial Intelligence</span>
-                <span className="text-cyan-400">Summa Cum Laude</span>
+                <span className="text-white font-bold">Computer Science student</span>
+                <span className="text-cyan-400">In progress</span>
               </div>
-              <p className="text-xs text-slate-400">State University of New York (SUNY) & MIT Lincoln Labs Fellow</p>
+              <p className="text-xs text-slate-400">Independent study focused on backend engineering, distributed systems, and AI infrastructure.</p>
             </div>
           </div>
         </div>

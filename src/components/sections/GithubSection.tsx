@@ -105,7 +105,7 @@ export const GithubSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
             <div className="flex items-center gap-2 text-white font-semibold">
               <Github className="w-4 h-4 text-cyan-400" />
-              <span>1,842 {t.github.verifiedCommits} in past year</span>
+              <span>50 public repositories on GitHub</span>
             </div>
             <div className="flex items-center gap-2 text-slate-400 text-[11px]">
               <span>Less</span>

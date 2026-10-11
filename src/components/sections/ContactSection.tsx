@@ -22,7 +22,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   );
   const [message, setMessage] = useState(
     initialServiceSelection.length > 0
-      ? `Hi Kian, I'd like to consult on the following architectural scope: ${initialServiceSelection.join(', ')}.`
+      ? `Hi Ali, I'd like to discuss the following project: ${initialServiceSelection.join(', ')}.`
       : ''
   );
 
@@ -32,7 +32,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('kian.vance.dev@gmail.com');
+    navigator.clipboard.writeText('alikheiri10313@gmail.com');
     setCopiedEmail(true);
     playSound('click');
     onShowToast(t.contact.emailCopied);
@@ -57,16 +57,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
     setIsSubmitting(true);
     playSound('click');
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      playSound('success');
-      onShowToast(t.contact.successTitle);
-      setName('');
-      setEmail('');
-      setMessage('');
-    }, 1200);
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\n\n${message}`);
+    window.location.href = `mailto:alikheiri10313@gmail.com?subject=${subject}&body=${body}`;
+    setIsSubmitting(false);
+    setSubmitted(true);
+    playSound('success');
+    onShowToast(t.contact.successTitle);
   };
 
   return (
@@ -98,7 +95,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   Direct Inbound
                 </span>
                 <h3 className="text-xl font-bold text-white font-sans">
-                  kian.vance.dev@gmail.com
+                  alikheiri10313@gmail.com
                 </h3>
               </div>
 

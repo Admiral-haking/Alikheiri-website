@@ -88,7 +88,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ post, onClose, onSho
               {post.publishedDate}
             </span>
             <span>·</span>
-            <span>Kian Vance</span>
+            <span>AliKheiri</span>
           </div>
 
           {/* Formatted Content */}

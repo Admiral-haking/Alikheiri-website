@@ -17,7 +17,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [accent, setAccentState] = useState<AccentTheme>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('kian_portfolio_accent') as AccentTheme;
+      const saved = localStorage.getItem('alikheiri_portfolio_accent') as AccentTheme;
       if (['cyan', 'purple', 'emerald', 'amber'].includes(saved)) {
         return saved;
       }
@@ -27,7 +27,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const [soundEnabled, setSoundEnabled] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('kian_portfolio_sound');
+      const saved = localStorage.getItem('alikheiri_portfolio_sound');
       return saved === 'true'; // Default muted for friendly UX, toggleable anytime
     }
     return false;
@@ -37,11 +37,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     document.documentElement.setAttribute('data-accent', accent);
-    localStorage.setItem('kian_portfolio_accent', accent);
+    localStorage.setItem('alikheiri_portfolio_accent', accent);
   }, [accent]);
 
   useEffect(() => {
-    localStorage.setItem('kian_portfolio_sound', String(soundEnabled));
+    localStorage.setItem('alikheiri_portfolio_sound', String(soundEnabled));
   }, [soundEnabled]);
 
   const setAccent = (newAccent: AccentTheme) => {

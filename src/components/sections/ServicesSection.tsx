@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { servicesData } from '../../data/portfolioData';
+import { servicesData } from '../../data/realContentData';
 
 const serviceIcons: Record<string, React.ElementType> = {
   Layout,

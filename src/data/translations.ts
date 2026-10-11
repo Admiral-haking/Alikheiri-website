@@ -160,14 +160,14 @@ export const translations = {
       submitBtn: "Transmit Encrypted Message",
       submitting: "Securing & Transmitting...",
       successTitle: "Transmission Confirmed",
-      successMessage: "Your message has been securely delivered to Kian's inbox. Expect a response within 24 hours.",
+      successMessage: "Your message is ready to be sent to AliKheiri. I will get back to you as soon as possible.",
       copyEmail: "Copy Direct Email",
       emailCopied: "Email copied to clipboard!",
-      timezone: "Timezone: UTC-7 / Pacific Standard (Available globally)"
+      timezone: "Timezone: Asia/Tehran / Remote collaboration available"
     },
     resume: {
       title: "Curriculum Vitae",
-      subtitle: "Kian Vance · Senior Creative Engineer & Full-Stack Architect",
+      subtitle: "AliKheiri · Backend Engineer in Progress & CS Student",
       printBtn: "Print / Save as PDF",
       closeBtn: "Close",
       downloadJson: "Export Resume Data"
@@ -191,7 +191,7 @@ export const translations = {
       switchToEn: "Switch to English"
     },
     footer: {
-      copyright: "© 2026 Kian Vance. All systems operational.",
+      copyright: "© 2026 AliKheiri. Building useful systems.",
       builtWith: "Engineered with React 19, TypeScript, Tailwind CSS & Motion.",
       statusText: "System Status: Nominal",
       privacy: "Encrypted & Secure",
@@ -359,10 +359,10 @@ export const translations = {
       submitBtn: "ارسال پیام امن",
       submitting: "در حال رمزنگاری و ارسال...",
       successTitle: "ارسال با موفقیت انجام شد",
-      successMessage: "پیام شما به صندوق شخصی کیان ارسال شد. ظرف حداکثر ۲۴ ساعت پاسخ دریافت خواهید کرد.",
+      successMessage: "پیام شما برای علی خیری آماده شد و در اولین فرصت پاسخ داده می‌شود.",
       copyEmail: "کپی آدرس ایمیل",
       emailCopied: "ایمیل در کلیپ‌بورد کپی شد!",
-      timezone: "منطقه زمانی: UTC-7 (پوشش جهانی پروژه‌ها)"
+      timezone: "منطقه زمانی: تهران / آماده همکاری ریموت"
     },
     resume: {
       title: "رزومه و سوابق شغلی",

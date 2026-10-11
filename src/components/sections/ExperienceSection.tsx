@@ -2,7 +2,7 @@ import React from 'react';
 import { Briefcase, Calendar, MapPin, Download, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { experiences } from '../../data/portfolioData';
+import { experiences } from '../../data/realProfileData';
 
 interface ExperienceSectionProps {
   onOpenResume: () => void;

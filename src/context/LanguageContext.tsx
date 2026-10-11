@@ -15,7 +15,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('kian_portfolio_lang') as Language;
+      const saved = localStorage.getItem('alikheiri_portfolio_lang') as Language;
       if (saved === 'en' || saved === 'fa') {
         return saved;
       }
@@ -24,7 +24,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   });
 
   useEffect(() => {
-    localStorage.setItem('kian_portfolio_lang', language);
+    localStorage.setItem('alikheiri_portfolio_lang', language);
     const isRtl = language === 'fa';
     document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', language);

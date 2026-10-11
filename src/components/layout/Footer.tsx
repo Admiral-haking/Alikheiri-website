@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
             <Twitter className="w-4 h-4" />
           </a>
           <a
-            href="mailto:kian.vance.dev@gmail.com"
+            href="mailto:alikheiri10313@gmail.com"
             className="p-2 rounded-lg hover:text-cyan-400 hover:bg-white/[0.05] transition-colors"
             aria-label="Email"
           >
