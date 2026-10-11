@@ -68,9 +68,6 @@ export const Footer: React.FC = () => {
 
         {/* Right: Back to Top */}
         <div className="flex items-center gap-4">
-          <span className="text-xs text-slate-500 font-mono hidden lg:inline">
-            {t.footer.builtWith}
-          </span>
           <button
             onClick={scrollToTop}
             className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/10 text-xs font-mono transition-colors"
