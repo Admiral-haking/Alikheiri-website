@@ -50,6 +50,16 @@ const PortfolioContent: React.FC = () => {
     } catch { return portfolioProjects; }
   });
 
+  const findProjectFromHash = (items: Project[]) => {
+    const match = window.location.hash.match(/^#project\/(.+)$/);
+    return match ? items.find(item => item.id === decodeURIComponent(match[1])) ?? null : null;
+  };
+
+  const openProject = (project: Project) => {
+    setSelectedProject(project);
+    window.history.replaceState(null, '', `#project/${encodeURIComponent(project.id)}`);
+  };
+
   // Initial service selection from calculator to contact form
   const [selectedServiceTitles, setSelectedServiceTitles] = useState<string[]>([]);
 
@@ -74,6 +84,19 @@ const PortfolioContent: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#admin') {
+        setAdminOpen(true);
+        return;
+      }
+      setSelectedProject(findProjectFromHash(projects));
+    };
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [projects]);
 
   useEffect(() => {
     const updateScrollState = () => {
@@ -116,7 +139,7 @@ const PortfolioContent: React.FC = () => {
         <HeroSection onOpenResume={() => setResumeOpen(true)} />
         <AboutSection onOpenResume={() => setResumeOpen(true)} />
         <TechStackSection />
-        <ProjectsSection projects={projects} onSelectProject={p => setSelectedProject(p)} />
+        <ProjectsSection projects={projects} onSelectProject={openProject} />
         <ExperienceSection onOpenResume={() => setResumeOpen(true)} />
         <ServicesSection
           onSelectServicesForContact={titles => {
@@ -167,7 +190,10 @@ const PortfolioContent: React.FC = () => {
       {/* Case Study Project Modal */}
       <ProjectModal
         project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        onClose={() => {
+          setSelectedProject(null);
+          if (window.location.hash.startsWith('#project/')) window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }}
       />
 
       {/* Article Reader Modal */}
