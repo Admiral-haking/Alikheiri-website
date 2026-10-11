@@ -12,8 +12,8 @@ export const GithubSection: React.FC = () => {
   const [username, setUsername] = useState('Admiral-haking');
   const [repos, setRepos] = useState<GitHubRepo[]>(fallbackGitHubRepos);
   const [loading, setLoading] = useState(false);
-  const [totalStars, setTotalStars] = useState(7);
-  const [profileStats, setProfileStats] = useState({ publicRepos: 50, followers: 0, following: 7 });
+  const [totalStars, setTotalStars] = useState<number | null>(null);
+  const [profileStats, setProfileStats] = useState<{ publicRepos: number | null; followers: number | null; following: number | null }>({ publicRepos: null, followers: null, following: null });
   const [error, setError] = useState<string | null>(null);
   const [activity, setActivity] = useState<{ type: string; repo: string; date: string; url: string }[]>([]);
 
@@ -134,12 +134,12 @@ export const GithubSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
             <div className="flex items-center gap-2 text-white font-semibold">
               <Github className="w-4 h-4 text-cyan-400" />
-              <span>{profileStats.publicRepos} public repositories on GitHub</span>
+              <span>{profileStats.publicRepos ?? '—'} public repositories on GitHub</span>
             </div>
             <div className="flex flex-wrap gap-4 text-slate-400 text-[11px]">
-              <span><strong className="text-cyan-300">{totalStars}</strong> stars in latest repos</span>
-              <span><strong className="text-cyan-300">{profileStats.followers}</strong> followers</span>
-              <span><strong className="text-cyan-300">{profileStats.following}</strong> following</span>
+              <span><strong className="text-cyan-300">{totalStars ?? '—'}</strong> stars in latest repos</span>
+              <span><strong className="text-cyan-300">{profileStats.followers ?? '—'}</strong> followers</span>
+              <span><strong className="text-cyan-300">{profileStats.following ?? '—'}</strong> following</span>
             </div>
           </div>
           {error && <p className="text-xs text-amber-300 border border-amber-500/20 bg-amber-500/5 rounded-lg px-3 py-2">{error}</p>}
