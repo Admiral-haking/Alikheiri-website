@@ -24,7 +24,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - run: npm run build
         env:
-          VITE_BASE_PATH: /Alikheiri-website/
+          VITE_BASE_PATH: /
       - name: Publish gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
