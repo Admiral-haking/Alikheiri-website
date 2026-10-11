@@ -83,6 +83,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               <div
                 key={service.id}
                 onClick={() => toggleService(service.id)}
+                onKeyDown={event => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleService(service.id);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-pressed={isSelected}
                 className={`p-6 rounded-2xl glass-panel border transition-all cursor-pointer flex flex-col justify-between space-y-6 ${
                   isSelected
                     ? 'border-cyan-400 bg-cyan-950/20 shadow-[0_0_20px_rgba(0,245,255,0.15)]'

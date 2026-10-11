@@ -213,10 +213,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-slate-300 font-medium">
+                    <label htmlFor="project-type" className="text-xs font-mono text-slate-300 font-medium">
                       {t.contact.projectTypeLabel}
                     </label>
                     <select
+                      id="project-type"
                       value={projectType}
                       onChange={e => setProjectType(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-[#090b14] border border-white/10 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-400"

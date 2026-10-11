@@ -205,6 +205,7 @@ export const TechStackSection: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setSelectedSkill(null)}
+                  aria-label="Close skill details"
                   className="p-1.5 rounded-lg text-slate-400 hover:text-white transition-colors"
                 >
                   ✕
