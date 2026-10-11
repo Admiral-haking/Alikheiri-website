@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Github, Star, GitFork, ExternalLink, RefreshCw, Code2, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { fallbackGitHubRepos } from '../../data/portfolioData';
+import { fallbackGitHubRepos } from '../../data/realPortfolioData';
 import { GitHubRepo } from '../../types/portfolio';
 
 export const GithubSection: React.FC = () => {
   const { t, isRtl } = useLanguage();
   const { playSound } = useTheme();
 
-  const [username, setUsername] = useState('kianvance');
+  const [username, setUsername] = useState('Admiral-haking');
   const [repos, setRepos] = useState<GitHubRepo[]>(fallbackGitHubRepos);
   const [loading, setLoading] = useState(false);
-  const [totalStars, setTotalStars] = useState(3205);
+  const [totalStars, setTotalStars] = useState(7);
 
   const fetchGithubRepos = async (userToFetch: string) => {
     playSound('click');
@@ -35,7 +35,7 @@ export const GithubSection: React.FC = () => {
           }));
           setRepos(formatted);
           const starsSum = formatted.reduce((acc, r) => acc + r.stars, 0);
-          setTotalStars(starsSum || 3205);
+          setTotalStars(starsSum);
         }
       }
     } catch {

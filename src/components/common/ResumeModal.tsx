@@ -35,12 +35,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
   const handleExportJson = () => {
     playSound('click');
     const resumeData = {
-      name: 'Kian Vance',
+      name: 'AliKheiri',
       role: 'Principal Systems Architect & Creative Full-Stack Engineer',
       contact: {
         email: 'kian.vance.dev@gmail.com',
         location: 'San Francisco, CA / Remote Worldwide',
-        website: 'https://kianvance.dev'
+        website: 'https://github.com/Admiral-haking'
       },
       skills: techSkills.map(s => ({ name: s.name, category: s.category, level: s.level })),
       experience: experiences
@@ -98,7 +98,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onSho
           <div className="border-b border-white/10 pb-6 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
               <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                Kian Vance
+                AliKheiri
               </h1>
               <span className="text-xs font-mono text-cyan-400 font-semibold tracking-wide">
                 Senior Full-Stack Architect & Creative Technologist

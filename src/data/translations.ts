@@ -1,8 +1,8 @@
 export const translations = {
   en: {
     nav: {
-      brand: "Kian Vance",
-      role: "Creative Engineer",
+      brand: "AliKheiri",
+      role: "AI Systems Builder",
       work: "Featured Work",
       stack: "Tech Stack",
       experience: "Journey",
@@ -15,26 +15,26 @@ export const translations = {
     hero: {
       status: "Available for high-impact contracts & full-time roles",
       greeting: "Hello, world. I am",
-      name: "Kian Vance",
+      name: "AliKheiri",
       roles: [
-        "Full-Stack Architect",
-        "AI Systems Engineer",
-        "Creative Technologist",
-        "High-Performance Developer"
+        "Computer Science Student",
+        "AI Systems Builder",
+        "Full-Stack Developer",
+        "Open Source Developer"
       ],
-      tagline: "Architecting resilient distributed systems, sub-millisecond algorithms, and immersive digital interfaces where high engineering meets cinematic design.",
+      tagline: "I build practical AI systems, web applications, and automation tools that turn ideas into useful software.",
       exploreBtn: "Explore My Work",
       contactBtn: "Initiate Contact",
       scrollHint: "Scroll to explore",
       quickStats: {
-        experience: "7+ Years",
-        experienceLabel: "Production Engineering",
-        projects: "45+",
-        projectsLabel: "Enterprise Systems",
-        uptime: "99.98%",
-        uptimeLabel: "Average Reliability",
-        users: "1.2M+",
-        usersLabel: "End Users Impacted"
+        experience: "50+",
+        experienceLabel: "Public repositories",
+        projects: "10+",
+        projectsLabel: "Featured projects",
+        uptime: "AI / Web",
+        uptimeLabel: "Current focus",
+        users: "Iran",
+        usersLabel: "Based in"
       }
     },
     about: {
@@ -42,7 +42,7 @@ export const translations = {
       title: "Building at the intersection of scale, intelligence, and visual discipline",
       bio1: "I am a senior full-stack architect and creative engineer with over 7 years of experience building mission-critical distributed platforms, AI agent networks, and high-frequency real-time web applications.",
       bio2: "My philosophy is rooted in architectural resilience: systems should not only withstand massive throughput but remain joyful to operate. When building client interfaces, I prioritize sub-100ms response latencies, typographic rigor, and GPU-accelerated motion.",
-      location: "San Francisco, CA & Remote Worldwide",
+      location: "Iran · Open to remote collaboration",
       principlesTitle: "Core Operating Principles",
       principles: [
         {
@@ -200,8 +200,8 @@ export const translations = {
   },
   fa: {
     nav: {
-      brand: "کیان ونس",
-      role: "مهندس خلاق",
+      brand: "علی خیری",
+      role: "توسعه‌دهنده سامانه‌های هوش مصنوعی",
       work: "نمونه‌کارها",
       stack: "فناوری‌ها",
       experience: "مسیر حرفه‌ای",
@@ -214,26 +214,26 @@ export const translations = {
     hero: {
       status: "آماده برای پروژه‌های مقیاس بالا و موقعیت‌های تمام‌وقت",
       greeting: "درود، من",
-      name: "کیان ونس هستم",
+      name: "علی خیری هستم",
       roles: [
-        "معمار فول‌استک وب",
-        "مهندس سیستم‌های هوش مصنوعی",
-        "توسعه‌دهنده سیستم‌های پرسرعت",
-        "مهندس فرانت‌اند و خلاقیت دیجیتال"
+        "دانشجوی علوم کامپیوتر",
+        "سازنده سامانه‌های هوش مصنوعی",
+        "توسعه‌دهنده فول‌استک",
+        "توسعه‌دهنده متن‌باز"
       ],
-      tagline: "طراحی و توسعه سیستم‌های توزیع‌شده تاب‌آور، الگوریتم‌های بلادرنگ و رابط‌های کاربری مدرن با ترکیب مهندسی پیشرفته و زیبایی‌شناسی آینده‌نگر.",
+      tagline: "ساخت سامانه‌های کاربردی هوش مصنوعی، اپلیکیشن‌های وب و ابزارهای خودکارسازی برای تبدیل ایده به نرم‌افزار مفید.",
       exploreBtn: "مشاهده پروژه‌ها",
       contactBtn: "شروع همکاری",
       scrollHint: "برای مشاهده به پایین اسکرول کنید",
       quickStats: {
-        experience: "+۷ سال",
-        experienceLabel: "توسعه سامانه‌های عملیاتی",
-        projects: "+۴۵",
-        projectsLabel: "پروژه سازمانی موفق",
-        uptime: "۹۹.۹۸٪",
-        uptimeLabel: "پایداری میانگین سیستم‌ها",
-        users: "+۱.۲ میلیون",
-        usersLabel: "کاربر نهایی تحت پوشش"
+        experience: "+۵۰",
+        experienceLabel: "مخزن عمومی گیت‌هاب",
+        projects: "+۱۰",
+        projectsLabel: "پروژه منتخب",
+        uptime: "AI / Web",
+        uptimeLabel: "تمرکز فعلی",
+        users: "ایران",
+        usersLabel: "محل فعالیت"
       }
     },
     about: {
@@ -241,7 +241,7 @@ export const translations = {
       title: "نوآوری در تقاطع مقیاس‌پذیری، هوش مصنوعی و دقت دیداری",
       bio1: "من معمار ارشد سیستم‌های فول‌استک و توسعه‌دهنده خلاق با بیش از ۷ سال تجربه در طراحی پلتفرم‌های توزیع‌شده حیاتی، شبکه‌های ایجنت هوش مصنوعی و وب‌اپلیکیشن‌های بلادرنگ با عملکرد فوق‌سریع هستم.",
       bio2: "دیدگاه مهندسی من بر پایه تاب‌آوری معماری استوار است: سیستم‌ها نه‌تنها باید در برابر ترافیک سنگین دوام بیاورند، بلکه باید تجربه کاری روان و دلپذیری فراهم کنند. در طراحی فرانت‌اند، اولویت من تاخیر کمتر از ۱۰۰ میلی‌ثانیه، تایپوگرافی تمیز و انیمیشن‌های شتاب‌یافته گرافیکی است.",
-      location: "سان‌فرانسیسکو، کالیفرنیا و همکاری ریموت در سراسر جهان",
+      location: "ایران · آماده همکاری ریموت",
       principlesTitle: "اصول کلیدی مهندسی",
       principles: [
         {

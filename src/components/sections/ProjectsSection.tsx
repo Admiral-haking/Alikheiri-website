@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, ArrowUpRight, Zap } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
-import { portfolioProjects } from '../../data/portfolioData';
+import { portfolioProjects } from '../../data/realPortfolioData';
 import { Project } from '../../types/portfolio';
 import { ProjectVisual } from '../common/ProjectVisual';
 

@@ -45,8 +45,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume }) => {
                   </div>
 
                   <div className="space-y-1">
-                    <div className="text-lg font-bold text-white font-sans">Kian Vance</div>
-                    <div className="text-xs text-cyan-400 font-mono">Senior Systems Architect</div>
+                    <div className="text-lg font-bold text-white font-sans">AliKheiri</div>
+                    <div className="text-xs text-cyan-400 font-mono">AI Systems Builder</div>
                   </div>
 
                   <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
