@@ -28,9 +28,26 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const isRtl = language === 'fa';
     document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', language);
-    document.title = language === 'fa'
-      ? 'علی خیری | توسعه‌دهنده بک‌اند و فول‌استک'
-      : 'AliKheiri | Backend & Full-Stack Developer';
+    const seo = language === 'fa'
+      ? {
+          title: 'علی خیری | توسعه‌دهنده بک‌اند و فول‌استک',
+          description: 'نمونه‌کارهای علی خیری؛ دانشجوی مهندسی کامپیوتر و توسعه‌دهنده بک‌اند و فول‌استک با تمرکز بر هوش مصنوعی دفاعی و امنیت داده.',
+          locale: 'fa_IR'
+        }
+      : {
+          title: 'AliKheiri | Backend & Full-Stack Developer',
+          description: 'Portfolio of AliKheiri, a computer engineering student and backend/full-stack developer focused on defensive AI, data security, and reliable systems.',
+          locale: 'en_US'
+        };
+    document.title = seo.title;
+    const description = document.querySelector('meta[name="description"]');
+    description?.setAttribute('content', seo.description);
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    ogDescription?.setAttribute('content', seo.description);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    ogTitle?.setAttribute('content', seo.title);
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    ogLocale?.setAttribute('content', seo.locale);
   }, [language]);
 
   const setLanguage = (lang: Language) => {
