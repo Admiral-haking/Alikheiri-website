@@ -48,6 +48,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     ogTitle?.setAttribute('content', seo.title);
     const ogLocale = document.querySelector('meta[property="og:locale"]');
     ogLocale?.setAttribute('content', seo.locale);
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    twitterTitle?.setAttribute('content', seo.title);
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    twitterDescription?.setAttribute('content', seo.description);
   }, [language]);
 
   const setLanguage = (lang: Language) => {
