@@ -17,6 +17,8 @@ export interface Project {
   solutionFa: string;
   architecture: string;
   architectureFa: string;
+  highlights: string[];
+  highlightsFa: string[];
   impact: string;
   impactFa: string;
   metrics: { label: string; value: string }[];

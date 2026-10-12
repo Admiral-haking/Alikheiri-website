@@ -36,6 +36,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   const impact = language === 'fa' ? project.impactFa : project.impact;
   const role = language === 'fa' ? project.roleFa : project.role;
   const status = language === 'fa' ? project.statusFa : project.status;
+  const highlights = language === 'fa' ? project.highlightsFa : project.highlights;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
@@ -129,6 +130,20 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               {t.projects.architectureTitle}
             </div>
             <ArchitectureDiagram project={project} />
+          </div>
+
+          <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5 space-y-3">
+            <div className="text-cyan-400 text-xs font-mono font-semibold tracking-wider uppercase">
+              {language === 'fa' ? 'نکات قابل بررسی در سورس' : 'What to inspect in the source'}
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {highlights.map(item => (
+                <li key={item} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Impact Statement */}
