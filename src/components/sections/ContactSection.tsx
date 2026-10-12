@@ -31,12 +31,28 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('alikheiri10313@gmail.com');
-    setCopiedEmail(true);
-    playSound('click');
-    onShowToast(t.contact.emailCopied);
-    setTimeout(() => setCopiedEmail(false), 2500);
+  const handleCopyEmail = async () => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText('alikheiri10313@gmail.com');
+      } else {
+        const input = document.createElement('input');
+        input.value = 'alikheiri10313@gmail.com';
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        const copied = document.execCommand('copy');
+        input.remove();
+        if (!copied) throw new Error('copy failed');
+      }
+      setCopiedEmail(true);
+      playSound('click');
+      onShowToast(t.contact.emailCopied);
+      setTimeout(() => setCopiedEmail(false), 2500);
+    } catch {
+      onShowToast(t.contact.emailCopyFailed);
+    }
   };
 
   const validate = () => {
