@@ -317,6 +317,17 @@ section[id] { scroll-margin-top: 5rem; }
   animation: modal-rise 700ms cubic-bezier(.2,.8,.2,1) both;
 }
 
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms cubic-bezier(.2,.8,.2,1), transform 650ms cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .ambient-orb {
   animation: ambient-drift 16s ease-in-out infinite;
 }
