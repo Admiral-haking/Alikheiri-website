@@ -6,7 +6,7 @@ import { fallbackGitHubRepos } from '../../data/realPortfolioData';
 import { GitHubRepo } from '../../types/portfolio';
 
 export const GithubSection: React.FC = () => {
-  const { t, isRtl } = useLanguage();
+  const { t, isRtl, language } = useLanguage();
   const { playSound } = useTheme();
 
   const [username, setUsername] = useState('Admiral-haking');
@@ -18,6 +18,12 @@ export const GithubSection: React.FC = () => {
   const [activity, setActivity] = useState<{ type: string; repo: string; date: string; url: string }[]>([]);
 
   const cacheKey = (user: string) => `github_snapshot_${user.toLowerCase()}`;
+  const formatDate = (value: string) => {
+    if (!value) return '—';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return new Intl.DateTimeFormat(language === 'fa' ? 'fa-IR' : 'en-US', { dateStyle: 'medium' }).format(date);
+  };
 
   const fetchGithubRepos = async (userToFetch: string) => {
     playSound('click');
@@ -155,7 +161,7 @@ export const GithubSection: React.FC = () => {
               {activity.map((event, index) => (
                 <a key={`${event.repo}-${event.date}-${index}`} href={event.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 hover:border-cyan-500/30 transition-colors">
                   <span className="text-xs text-slate-200 font-mono truncate"><strong className="text-cyan-300">{event.type}</strong> · {event.repo}</span>
-                  <span className="text-[10px] text-slate-500 font-mono shrink-0">{event.date}</span>
+                  <span className="text-[10px] text-slate-500 font-mono shrink-0">{formatDate(event.date)}</span>
                 </a>
               ))}
             </div>
@@ -219,7 +225,7 @@ export const GithubSection: React.FC = () => {
                   </span>
                   {repo.license && <span className="text-slate-500">{repo.license}</span>}
                 </div>
-                <span className="text-[11px] text-slate-500">{repo.updatedAt}</span>
+                <span className="text-[11px] text-slate-500">{formatDate(repo.updatedAt)}</span>
               </div>
             </div>
           ))}

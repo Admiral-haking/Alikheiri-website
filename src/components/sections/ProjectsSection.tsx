@@ -17,6 +17,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
 
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [githubStats, setGithubStats] = useState<Record<string, { stars: number; forks: number; license?: string; language?: string; updatedAt?: string }>>({});
+  const formatDate = (value?: string) => {
+    if (!value) return '';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return new Intl.DateTimeFormat(language === 'fa' ? 'fa-IR' : 'en-US', { dateStyle: 'medium' }).format(date);
+  };
 
   useEffect(() => {
     const projectRepos = projects
@@ -174,7 +180,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
               displayMetrics.push({ label: 'License', value: liveStats.license });
             }
             if (liveStats?.updatedAt) {
-              displayMetrics.push({ label: 'Updated', value: liveStats.updatedAt.slice(0, 10) });
+              displayMetrics.push({ label: 'Updated', value: formatDate(liveStats.updatedAt) });
             }
 
             return (
