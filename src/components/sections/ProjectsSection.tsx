@@ -86,6 +86,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
             const title = language === 'fa' ? project.titleFa : project.title;
             const subtitle = language === 'fa' ? project.subtitleFa : project.subtitle;
             const description = language === 'fa' ? project.descriptionFa : project.description;
+            const status = language === 'fa' ? project.statusFa : project.status;
+            const role = language === 'fa' ? project.roleFa : project.role;
 
             return (
               <div
@@ -127,16 +129,24 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                       ))}
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyan-300 transition-colors">
-                        {title}
-                      </h3>
-                      <p className="text-xs text-slate-400 font-mono mt-0.5">{subtitle}</p>
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyan-300 transition-colors">
+                          {title}
+                        </h3>
+                        <p className="text-xs text-slate-400 font-mono mt-0.5">{subtitle}</p>
+                      </div>
+                      {status && <span className="shrink-0 max-w-[42%] text-right text-[10px] leading-relaxed font-mono text-emerald-300/90">
+                        {status}
+                      </span>}
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed line-clamp-3">
+                    <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed line-clamp-4">
                       {description}
                     </p>
+                    {role && <p className="text-[11px] text-cyan-200/80 font-mono leading-relaxed">
+                      <span className="text-slate-500">{language === 'fa' ? 'نقش: ' : 'Role: '}</span>{role}
+                    </p>}
                   </div>
 
                   {/* Metrics preview row */}
