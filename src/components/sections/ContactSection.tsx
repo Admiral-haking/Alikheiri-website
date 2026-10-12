@@ -176,38 +176,44 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-slate-300 font-medium">
+                      <label htmlFor="contact-name" className="text-xs font-mono text-slate-300 font-medium">
                         {t.contact.nameLabel} *
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         value={name}
                         onChange={e => setName(e.target.value)}
+                        aria-invalid={Boolean(errors.name)}
+                        aria-describedby={errors.name ? 'contact-name-error' : undefined}
                         placeholder={t.contact.namePlaceholder}
                         className={`w-full px-4 py-2.5 rounded-xl bg-white/[0.03] border text-xs font-mono text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 ${
                           errors.name ? 'border-rose-500' : 'border-white/10'
                         }`}
                       />
                       {errors.name && (
-                        <p className="text-[11px] font-mono text-rose-400">{errors.name}</p>
+                        <p id="contact-name-error" role="alert" className="text-[11px] font-mono text-rose-400">{errors.name}</p>
                       )}
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-slate-300 font-medium">
+                      <label htmlFor="contact-email" className="text-xs font-mono text-slate-300 font-medium">
                         {t.contact.emailLabel} *
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby={errors.email ? 'contact-email-error' : undefined}
                         placeholder={t.contact.emailPlaceholder}
                         className={`w-full px-4 py-2.5 rounded-xl bg-white/[0.03] border text-xs font-mono text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 ${
                           errors.email ? 'border-rose-500' : 'border-white/10'
                         }`}
                       />
                       {errors.email && (
-                        <p className="text-[11px] font-mono text-rose-400">{errors.email}</p>
+                        <p id="contact-email-error" role="alert" className="text-[11px] font-mono text-rose-400">{errors.email}</p>
                       )}
                     </div>
                   </div>
@@ -231,20 +237,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-slate-300 font-medium">
+                    <label htmlFor="contact-message" className="text-xs font-mono text-slate-300 font-medium">
                       {t.contact.messageLabel} *
                     </label>
                     <textarea
+                      id="contact-message"
                       rows={5}
                       value={message}
                       onChange={e => setMessage(e.target.value)}
+                      aria-invalid={Boolean(errors.message)}
+                      aria-describedby={errors.message ? 'contact-message-error' : undefined}
                       placeholder={t.contact.messagePlaceholder}
                       className={`w-full px-4 py-2.5 rounded-xl bg-white/[0.03] border text-xs font-sans text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 resize-none ${
                         errors.message ? 'border-rose-500' : 'border-white/10'
                       }`}
                     />
                     {errors.message && (
-                      <p className="text-[11px] font-mono text-rose-400">{errors.message}</p>
+                      <p id="contact-message-error" role="alert" className="text-[11px] font-mono text-rose-400">{errors.message}</p>
                     )}
                   </div>
 
