@@ -208,7 +208,7 @@ export const translations = {
     },
     footer: {
       copyright: "© 2026 AliKheiri. Building useful systems.",
-      builtWith: "Engineered with React 19, TypeScript, Tailwind CSS & Motion.",
+      builtWith: "Backend and full-stack systems, built with care.",
       statusText: "System Status: Nominal",
       privacy: "Encrypted & Secure",
       backToTop: "Return to Top"
@@ -398,7 +398,7 @@ export const translations = {
     },
     resume: {
       title: "رزومه و سوابق شغلی",
-      subtitle: "کیان ونس · معمار ارشد سیستم و مهندس خلاق وب",
+      subtitle: "علی خیری · توسعه‌دهنده بک‌اند و فول‌استک",
       printBtn: "چاپ / ذخیره نسخه PDF",
       closeBtn: "بستن",
       downloadJson: "دانلود داده‌های رزومه"
@@ -422,8 +422,8 @@ export const translations = {
       switchToEn: "Switch to English"
     },
     footer: {
-      copyright: "© ۲۰۲۶ کیان ونس. تمام سیستم‌ها در وضعیت عملیاتی قرار دارند.",
-      builtWith: "طراحی و توسعه با React 19، TypeScript، Tailwind CSS و Motion.",
+      copyright: "© ۲۰۲۶ علی خیری. ساخت سامانه‌های کاربردی و قابل اعتماد.",
+      builtWith: "توسعه‌دهنده بک‌اند و فول‌استک؛ آماده همکاری و ساخت محصولات واقعی.",
       statusText: "وضعیت سیستم: نرمال و پایدار",
       privacy: "رمزنگاری‌شده و امن",
       backToTop: "بازگشت به ابتدای صفحه"
