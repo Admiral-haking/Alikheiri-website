@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ExternalLink, Github, ArrowUpRight, Zap } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -16,6 +16,38 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
   const { playSound } = useTheme();
 
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [githubStats, setGithubStats] = useState<Record<string, { stars: number; forks: number; license?: string }>>({});
+
+  useEffect(() => {
+    const projectRepos = projects
+      .map(project => {
+        const match = project.githubUrl.match(/github\.com\/([^/]+)\/([^/]+)$/);
+        return match ? { id: project.id, owner: match[1], repo: match[2] } : null;
+      })
+      .filter((item): item is { id: string; owner: string; repo: string } => Boolean(item));
+
+    if (!projectRepos.length) return;
+    let cancelled = false;
+    void Promise.all(projectRepos.map(async ({ id, owner, repo }) => {
+      try {
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+        if (!response.ok) return null;
+        const data = await response.json();
+        return [id, { stars: data.stargazers_count ?? 0, forks: data.forks_count ?? 0, license: data.license?.spdx_id }] as const;
+      } catch {
+        return null;
+      }
+    })).then(results => {
+      if (cancelled) return;
+      const nextStats: Record<string, { stars: number; forks: number; license?: string }> = {};
+      results.forEach(result => {
+        if (result) nextStats[result[0]] = result[1];
+      });
+      setGithubStats(nextStats);
+    });
+
+    return () => { cancelled = true; };
+  }, [projects]);
 
   const filters = [
     { id: 'all', label: t.projects.categories.all },
@@ -100,6 +132,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
             const description = language === 'fa' ? project.descriptionFa : project.description;
             const status = language === 'fa' ? project.statusFa : project.status;
             const role = language === 'fa' ? project.roleFa : project.role;
+            const liveStats = githubStats[project.id];
+            const displayMetrics = project.metrics.map(metric => {
+              if (!liveStats) return metric;
+              if (metric.label.toLowerCase() === 'stars') return { ...metric, value: String(liveStats.stars) };
+              if (metric.label.toLowerCase() === 'forks') return { ...metric, value: String(liveStats.forks) };
+              return metric;
+            });
 
             return (
               <div
@@ -163,7 +202,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
 
                   {/* Metrics preview row */}
                   <div className="pt-4 border-t border-white/5 grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    {project.metrics.map(m => (
+                    {displayMetrics.map(m => (
                       <div key={m.label} className="text-center p-2 rounded-lg bg-white/[0.02]">
                         <div className="text-sm font-bold font-mono text-cyan-300 tabular-nums">
                           {m.value}
