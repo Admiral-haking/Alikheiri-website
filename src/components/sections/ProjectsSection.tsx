@@ -82,6 +82,18 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"
           dir={isRtl ? 'rtl' : 'ltr'}
         >
+          {filteredProjects.length === 0 && (
+            <div className="lg:col-span-2 rounded-2xl glass-panel border border-white/[0.08] p-10 text-center space-y-4">
+              <p className="text-sm text-slate-300 font-sans">{t.projects.noResults}</p>
+              <button
+                type="button"
+                onClick={() => setActiveFilter('all')}
+                className="inline-flex items-center justify-center min-h-11 px-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-mono hover:bg-cyan-500/20 transition-colors"
+              >
+                {t.projects.resetFilters}
+              </button>
+            </div>
+          )}
           {filteredProjects.map((project, idx) => {
             const title = language === 'fa' ? project.titleFa : project.title;
             const subtitle = language === 'fa' ? project.subtitleFa : project.subtitle;
