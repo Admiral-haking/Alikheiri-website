@@ -19,8 +19,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
   useEffect(() => {
     if (project) {
       playSound('modal');
+      const dialog = document.getElementById('project-dialog');
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose();
+        if (e.key === 'Tab' && dialog) {
+          const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])'));
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       };
       window.addEventListener('keydown', handleKeyDown);
       return () => window.removeEventListener('keydown', handleKeyDown);
@@ -43,6 +57,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200 overflow-y-auto"
       role="dialog"
+      id="project-dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
       onMouseDown={event => {
