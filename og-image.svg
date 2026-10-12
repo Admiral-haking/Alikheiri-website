@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AliKheiri — Backend and Full-Stack Developer</title>
+  <desc id="desc">Portfolio of AliKheiri, building backend systems, defensive AI, and full-stack products.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050508"/><stop offset="1" stop-color="#10152a"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#67e8f9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity=".18" stroke="#22d3ee" fill="none"><path d="M0 520 230 290 420 470 650 150 900 390 1200 70"/><path d="M0 90 180 230 390 110 620 330 820 190 1200 470"/></g>
+  <circle cx="930" cy="150" r="170" fill="#0891b2" opacity=".12" filter="url(#glow)"/>
+  <rect x="84" y="82" width="1032" height="466" rx="34" fill="#ffffff" fill-opacity=".035" stroke="#67e8f9" stroke-opacity=".28"/>
+  <text x="132" y="188" fill="#67e8f9" font-family="monospace" font-size="24" letter-spacing="5">TEAMCORE.IR / PORTFOLIO</text>
+  <text x="132" y="292" fill="#f8fafc" font-family="Arial, sans-serif" font-size="68" font-weight="700">AliKheiri</text>
+  <text x="136" y="350" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="30">Backend &amp; Full-Stack Developer</text>
+  <text x="136" y="414" fill="#94a3b8" font-family="Arial, sans-serif" font-size="23">Backend systems · Defensive AI · Data security · Open source</text>
+  <g transform="translate(930 350)" filter="url(#glow)"><path d="M0-82 72-41 72 41 0 82-72 41-72-41Z" fill="none" stroke="url(#cyan)" stroke-width="7"/><path d="m-32 0 22 22 44-50" fill="none" stroke="#f8fafc" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>
