@@ -162,8 +162,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
             <button
               type="button"
               onClick={async () => {
-                await navigator.clipboard?.writeText(window.location.href);
-                onShowToast?.(t.projects.projectLinkCopied);
+                try {
+                  if (navigator.clipboard?.writeText) {
+                    await navigator.clipboard.writeText(window.location.href);
+                  } else {
+                    const input = document.createElement('input');
+                    input.value = window.location.href;
+                    input.style.position = 'fixed';
+                    input.style.opacity = '0';
+                    document.body.appendChild(input);
+                    input.select();
+                    if (!document.execCommand('copy')) throw new Error('copy failed');
+                    input.remove();
+                  }
+                  onShowToast?.(t.projects.projectLinkCopied);
+                } catch {
+                  onShowToast?.(t.projects.projectLinkCopyFailed);
+                }
               }}
               className="inline-flex items-center gap-2 px-3 py-2 text-xs font-mono rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 transition-colors border border-white/10"
               aria-label={t.projects.copyProjectLink}
