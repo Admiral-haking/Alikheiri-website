@@ -27,6 +27,20 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
       .filter((item): item is { id: string; owner: string; repo: string } => Boolean(item));
 
     if (!projectRepos.length) return;
+    const cacheKey = 'featured_project_github_stats';
+    const cacheLifetime = 10 * 60 * 1000;
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const snapshot = JSON.parse(cached) as { savedAt?: number; stats?: Record<string, { stars: number; forks: number; license?: string }> };
+        if (snapshot.savedAt && snapshot.stats && Date.now() - snapshot.savedAt < cacheLifetime) {
+          setGithubStats(snapshot.stats);
+          return;
+        }
+      }
+    } catch {
+      // Fetch a fresh snapshot when browser storage contains invalid data.
+    }
     let cancelled = false;
     void Promise.all(projectRepos.map(async ({ id, owner, repo }) => {
       try {
@@ -44,6 +58,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
         if (result) nextStats[result[0]] = result[1];
       });
       setGithubStats(nextStats);
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats: nextStats }));
+      } catch {
+        // Storage may be unavailable in private browsing; live data still renders.
+      }
     });
 
     return () => { cancelled = true; };
