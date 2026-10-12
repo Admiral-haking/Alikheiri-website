@@ -142,7 +142,7 @@ export const GithubSection: React.FC = () => {
               <span><strong className="text-cyan-300">{profileStats.following ?? '—'}</strong> following</span>
             </div>
           </div>
-          {error && <p className="text-xs text-amber-300 border border-amber-500/20 bg-amber-500/5 rounded-lg px-3 py-2">{error}</p>}
+          {error && <p role="alert" className="text-xs text-amber-300 border border-amber-500/20 bg-amber-500/5 rounded-lg px-3 py-2">{error}</p>}
         </div>
 
         <div className="p-6 rounded-2xl glass-panel border border-white/[0.08] mb-8" dir={isRtl ? 'rtl' : 'ltr'}>
@@ -167,6 +167,7 @@ export const GithubSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           dir={isRtl ? 'rtl' : 'ltr'}
         >
+          {loading && <div className="sr-only" role="status" aria-live="polite">Loading GitHub repositories and recent activity</div>}
           {loading && Array.from({ length: 4 }, (_, index) => (
             <div key={`skeleton-${index}`} className="p-6 rounded-2xl glass-panel border border-white/[0.08] space-y-5 animate-pulse" aria-hidden="true">
               <div className="h-4 w-1/2 rounded bg-white/10" />
