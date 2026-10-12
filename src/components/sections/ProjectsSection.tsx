@@ -139,6 +139,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
               if (metric.label.toLowerCase() === 'forks') return { ...metric, value: String(liveStats.forks) };
               return metric;
             });
+            if (liveStats && !displayMetrics.some(metric => metric.label.toLowerCase() === 'forks')) {
+              displayMetrics.push({ label: 'Forks', value: String(liveStats.forks) });
+            }
+            if (liveStats?.license && !displayMetrics.some(metric => metric.label.toLowerCase() === 'license')) {
+              displayMetrics.push({ label: 'License', value: liveStats.license });
+            }
 
             return (
               <div
