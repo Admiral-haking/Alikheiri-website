@@ -16,7 +16,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
   const { playSound } = useTheme();
 
   const [activeFilter, setActiveFilter] = useState<string>('all');
-  const [githubStats, setGithubStats] = useState<Record<string, { stars: number; forks: number; license?: string }>>({});
+  const [githubStats, setGithubStats] = useState<Record<string, { stars: number; forks: number; license?: string; language?: string; updatedAt?: string }>>({});
 
   useEffect(() => {
     const projectRepos = projects
@@ -32,7 +32,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
     try {
       const cached = localStorage.getItem(cacheKey);
       if (cached) {
-        const snapshot = JSON.parse(cached) as { savedAt?: number; stats?: Record<string, { stars: number; forks: number; license?: string }> };
+        const snapshot = JSON.parse(cached) as { savedAt?: number; stats?: Record<string, { stars: number; forks: number; license?: string; language?: string; updatedAt?: string }> };
         if (snapshot.savedAt && snapshot.stats && Date.now() - snapshot.savedAt < cacheLifetime) {
           setGithubStats(snapshot.stats);
           return;
@@ -47,7 +47,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
         if (!response.ok) return null;
         const data = await response.json();
-        return [id, { stars: data.stargazers_count ?? 0, forks: data.forks_count ?? 0, license: data.license?.spdx_id }] as const;
+        return [id, {
+          stars: data.stargazers_count ?? 0,
+          forks: data.forks_count ?? 0,
+          license: data.license?.spdx_id,
+          language: data.language || undefined,
+          updatedAt: data.updated_at || undefined
+        }] as const;
       } catch {
         return null;
       }
@@ -156,6 +162,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
               if (!liveStats) return metric;
               if (metric.label.toLowerCase() === 'stars') return { ...metric, value: String(liveStats.stars) };
               if (metric.label.toLowerCase() === 'forks') return { ...metric, value: String(liveStats.forks) };
+              if (metric.label.toLowerCase() === 'language' && liveStats.language) return { ...metric, value: liveStats.language };
               return metric;
             });
             if (liveStats && !displayMetrics.some(metric => metric.label.toLowerCase() === 'forks')) {
@@ -163,6 +170,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
             }
             if (liveStats?.license && !displayMetrics.some(metric => metric.label.toLowerCase() === 'license')) {
               displayMetrics.push({ label: 'License', value: liveStats.license });
+            }
+            if (liveStats?.updatedAt) {
+              displayMetrics.push({ label: 'Updated', value: liveStats.updatedAt.slice(0, 10) });
             }
 
             return (
