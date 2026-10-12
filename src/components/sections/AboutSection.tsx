@@ -38,7 +38,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume }) => {
                 <div className="relative flex flex-col items-center justify-center text-center p-6 space-y-4">
                   <div className="relative w-36 h-36 rounded-full bg-cyan-950/40 border-2 border-cyan-400/60 p-2 shadow-[0_0_25px_rgba(0,245,255,0.25)] flex items-center justify-center">
                     <div className="w-full h-full rounded-full bg-[#050508] border border-cyan-500/30 flex items-center justify-center overflow-hidden">
-                      <img src="https://avatars.githubusercontent.com/u/168779560?v=4" alt="AliKheiri" className="w-full h-full object-cover" />
+                      <img src="/assets/alikheiri-avatar.jpg" alt="AliKheiri" width="460" height="460" loading="eager" decoding="async" className="w-full h-full object-cover" />
                     </div>
                     {/* Active presence marker */}
                     <span className="absolute bottom-1 right-2 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#050508] shadow-[0_0_8px_#10B981]" />
