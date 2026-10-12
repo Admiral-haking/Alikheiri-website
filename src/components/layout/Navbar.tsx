@@ -103,6 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmdPalette, onOpenResume }
             }}
             className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/10 text-xs font-mono transition-colors"
             title="Open command palette (Cmd+K / Ctrl+K)"
+            aria-label="Open command palette"
           >
             <Command className="w-3.5 h-3.5" />
             <span className="text-[11px] font-sans">K</span>
@@ -127,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmdPalette, onOpenResume }
               playSound('click');
               handleNavClick('#contact');
             }}
-            className="px-4 py-2 text-xs font-mono font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-[0_0_15px_-3px_rgba(0,245,255,0.5)]"
+            className="max-[420px]:hidden px-4 py-2 text-xs font-mono font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-[0_0_15px_-3px_rgba(0,245,255,0.5)]"
           >
             {t.nav.contact}
           </button>
@@ -135,8 +136,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmdPalette, onOpenResume }
           {/* Mobile hamburger menu */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="md:hidden min-w-11 min-h-11 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -146,6 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCmdPalette, onOpenResume }
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
+          id="mobile-navigation"
           className="md:hidden glass-panel-elevated border-b border-white/10 px-6 py-6 space-y-4 animate-in slide-in-from-top-2 duration-150"
           dir={isRtl ? 'rtl' : 'ltr'}
         >
