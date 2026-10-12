@@ -41,9 +41,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   const validate = () => {
     const errs: { name?: string; email?: string; message?: string } = {};
-    if (!name.trim()) errs.name = 'Please provide your name';
-    if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) errs.email = 'Please provide a valid email address';
-    if (!message.trim() || message.trim().length < 8) errs.message = 'Please provide a brief message (min 8 chars)';
+    if (!name.trim()) errs.name = t.contact.validationName;
+    if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) errs.email = t.contact.validationEmail;
+    if (!message.trim() || message.trim().length < 8) errs.message = t.contact.validationMessage;
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -101,7 +101,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             <div className="p-6 sm:p-8 rounded-2xl glass-panel border border-white/[0.08] space-y-6">
               <div className="space-y-2">
                 <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
-                  Direct Inbound
+                  {t.contact.directLabel}
                 </span>
                 <h3 className="text-xl font-bold text-white font-sans">
                   alikheiri10313@gmail.com
@@ -141,11 +141,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Shield className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>End-to-end encrypted dispatch</span>
+                  <span>{t.contact.securityNote}</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Average response time: &lt;24 hours</span>
+                  <span>{t.contact.responseTime}</span>
                 </div>
               </div>
             </div>
@@ -169,7 +169,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     onClick={() => setSubmitted(false)}
                     className="mt-4 px-6 py-2.5 text-xs font-mono rounded-lg bg-white/10 hover:bg-white/15 text-white transition-colors border border-white/10"
                   >
-                    Send another message
+                    {t.contact.sendAnother}
                   </button>
                 </div>
               ) : (
