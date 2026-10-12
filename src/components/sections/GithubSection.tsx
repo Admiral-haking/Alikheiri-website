@@ -64,12 +64,20 @@ export const GithubSection: React.FC = () => {
       setError(t.github.error);
       const cached = localStorage.getItem(cacheKey(userToFetch));
       if (cached) {
-        const snapshot = JSON.parse(cached);
-        setRepos(snapshot.repos);
-        setTotalStars(snapshot.stars);
-        setProfileStats(snapshot.profileStats);
-        setActivity(snapshot.activity || []);
-      } else setRepos(fallbackGitHubRepos);
+        try {
+          const snapshot = JSON.parse(cached);
+          if (Array.isArray(snapshot.repos)) {
+            setRepos(snapshot.repos);
+            setTotalStars(typeof snapshot.stars === 'number' ? snapshot.stars : null);
+            setProfileStats(snapshot.profileStats || { publicRepos: null, followers: null, following: null });
+            setActivity(Array.isArray(snapshot.activity) ? snapshot.activity : []);
+            return;
+          }
+        } catch {
+          localStorage.removeItem(cacheKey(userToFetch));
+        }
+      }
+      setRepos(fallbackGitHubRepos);
     } finally {
       setLoading(false);
     }
