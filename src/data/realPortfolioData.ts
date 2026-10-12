@@ -6,7 +6,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'pulsecore', title: 'PulseCore', titleFa: 'پالس‌کور',
     subtitle: 'TypeScript system project', subtitleFa: 'پروژه سیستمی با TypeScript', category: 'systems',
-    tags: ['TypeScript', 'Systems', 'Open Source'],
+    tags: ['TypeScript', 'Backend', 'Systems', 'Open Source'],
     description: 'A TypeScript project from AliKheiri focused on building practical, maintainable software systems.',
     descriptionFa: 'پروژه‌ای با TypeScript از علی خیری با تمرکز بر ساخت نرم‌افزارهای کاربردی و قابل نگهداری.',
     challenge: 'Turning a technical idea into a clear, usable public repository.',
@@ -25,7 +25,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'kronos', title: 'KRONOS', titleFa: 'کرونوس',
     subtitle: 'TypeScript application', subtitleFa: 'اپلیکیشن TypeScript', category: 'fullstack',
-    tags: ['TypeScript', 'Application Development', 'Web'],
+    tags: ['TypeScript', 'Backend', 'Application Development', 'Web'],
     description: 'A public TypeScript application project exploring product development from idea to implementation.',
     descriptionFa: 'پروژه عمومی TypeScript برای تجربه و توسعه محصول از ایده تا پیاده‌سازی.',
     challenge: 'Keep the product direction understandable while the implementation evolves.',
@@ -44,7 +44,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'iam-sso', title: 'IAM SSO System', titleFa: 'سامانه IAM و SSO',
     subtitle: 'Identity and access management', subtitleFa: 'مدیریت هویت و دسترسی', category: 'systems',
-    tags: ['TypeScript', 'IAM', 'SSO', 'Security'],
+    tags: ['TypeScript', 'Backend', 'IAM', 'SSO', 'Security'],
     description: 'A public identity and single sign-on system project focused on authentication architecture.',
     descriptionFa: 'پروژه عمومی سامانه هویت و ورود یکپارچه با تمرکز بر معماری احراز هویت.',
     challenge: 'Model authentication as a reusable platform capability instead of a page-level feature.',
@@ -63,7 +63,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'mlops-from-scratch', title: 'MLOps From Scratch', titleFa: 'MLOps از صفر',
     subtitle: 'Persian sentiment analysis pipeline', subtitleFa: 'خط لوله تحلیل احساسات فارسی', category: 'ai',
-    tags: ['Python', 'MLOps', 'NLP', 'A/B Testing'],
+    tags: ['Python', 'Backend', 'MLOps', 'NLP', 'A/B Testing'],
     description: 'An end-to-end MLOps pipeline for Persian sentiment analysis with automated training, A/B testing, and drift monitoring.',
     descriptionFa: 'خط لوله کامل MLOps برای تحلیل احساسات فارسی با آموزش خودکار، تست A/B و پایش drift.',
     challenge: 'Make a machine-learning experiment reproducible and observable beyond a notebook.',
@@ -82,7 +82,7 @@ export const portfolioProjects: Project[] = [
   {
     id: 'ai-orchestra-pro', title: 'AI Orchestra Pro', titleFa: 'AI Orchestra Pro',
     subtitle: 'Enterprise multi-agent LLM orchestration', subtitleFa: 'هماهنگ‌سازی ایجنت‌های LLM سازمانی', category: 'ai',
-    tags: ['Python', 'LLM', 'Agents', 'Orchestration', 'Automation'],
+    tags: ['Python', 'Backend', 'LLM', 'Agents', 'Orchestration', 'Automation'],
     description: 'An enterprise-grade multi-agent LLM orchestration project published by AliKheiri.',
     descriptionFa: 'پروژه هماهنگ‌سازی چندایجنت LLM در سطح سازمانی که توسط علی خیری منتشر شده است.',
     challenge: 'Coordinate specialized AI capabilities as a system with explicit responsibilities.',
@@ -100,7 +100,7 @@ export const portfolioProjects: Project[] = [
   },
   {
     id: 'digital-brain', title: 'Digital Brain', titleFa: 'مغز دیجیتال', subtitle: 'Hybrid AI threat simulation system', subtitleFa: 'سامانه ترکیبی هوش مصنوعی برای شبیه‌سازی تهدید', category: 'ai',
-    tags: ['Java', 'Spring Boot', 'Python', 'FastAPI', 'AWS', 'Security'],
+    tags: ['Java', 'Backend', 'Spring Boot', 'Python', 'FastAPI', 'AWS', 'Security'],
     description: 'A hybrid AI system designed for threat simulation and defensive security research, deployed across three national and one international data center.',
     descriptionFa: 'سامانه ترکیبی هوش مصنوعی برای شبیه‌سازی تهدید و تحقیق امنیت دفاعی که در سه دیتاسنتر ملی و یک دیتاسنتر بین‌المللی مستقر شده است.',
     challenge: 'Connect AI models, microservices, and operational infrastructure into a system that can support security simulation work.',
