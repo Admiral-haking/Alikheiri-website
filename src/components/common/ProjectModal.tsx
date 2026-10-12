@@ -40,7 +40,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
   const highlights = language === 'fa' ? project.highlightsFa : project.highlights;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
+      onMouseDown={event => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
       <div
         className="relative w-full max-w-4xl my-auto glass-panel-elevated rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col"
         dir={isRtl ? 'rtl' : 'ltr'}
@@ -52,6 +60,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
             <p className="text-xs text-slate-400 font-mono mt-0.5">{subtitle}</p>
           </div>
           <button
+            autoFocus
             onClick={() => {
               playSound('click');
               onClose();
