@@ -190,6 +190,7 @@ const PortfolioContent: React.FC = () => {
 
         <ProjectModal
           project={selectedProject}
+        onShowToast={showToast}
           onClose={() => {
             setSelectedProject(null);
             if (window.location.hash.startsWith('#project/')) window.history.replaceState(null, '', window.location.pathname + window.location.search);

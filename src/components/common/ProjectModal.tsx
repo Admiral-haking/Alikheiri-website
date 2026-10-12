@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, Github, Zap } from 'lucide-react';
+import { X, ExternalLink, Github, Zap, Share2 } from 'lucide-react';
 import { Project } from '../../types/portfolio';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -9,9 +9,10 @@ import { ArchitectureDiagram } from './ArchitectureDiagram';
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
+  onShowToast?: (message: string) => void;
 }
 
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onShowToast }) => {
   const { language, t, isRtl } = useLanguage();
   const { playSound } = useTheme();
 
@@ -158,6 +159,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Modal Action Footer */}
         <div className="flex items-center justify-between px-6 py-4 border-t border-white/10 bg-white/[0.02]">
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={async () => {
+                await navigator.clipboard?.writeText(window.location.href);
+                onShowToast?.(t.projects.projectLinkCopied);
+              }}
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-mono rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 transition-colors border border-white/10"
+              aria-label={t.projects.copyProjectLink}
+            >
+              <Share2 className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{t.projects.copyProjectLink}</span>
+            </button>
             {project.githubUrl && <a
               href={project.githubUrl}
               target="_blank"
