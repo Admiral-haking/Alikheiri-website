@@ -117,10 +117,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
               return (
                 <button
                   key={filter.id}
+                  type="button"
                   onClick={() => {
                     playSound('click');
                     setActiveFilter(filter.id);
                   }}
+                  aria-pressed={isActive}
                   className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-[0_0_12px_rgba(0,245,255,0.2)]'
